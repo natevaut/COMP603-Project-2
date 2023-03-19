@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class Animal {
 
     private Species species;
-    private String[] foods;
-    private HashMap<String, Float> nutrition; // percentage
+    private String[] foods, liquids;
+    private HashMap<String, Float> nutrition, hydration; // percentage
     private String name;
 
     /**
@@ -33,6 +33,12 @@ public class Animal {
         nutrition.put(foods[0], 0.2f);
         nutrition.put(foods[1], 0.5f);
         nutrition.put(foods[2], 0.1f);
+
+        liquids = new String[]{"water", "milk", "juice"};
+        hydration.put(liquids[0], 0.7f);
+        hydration.put(liquids[1], 0.1f);
+        hydration.put(liquids[2], 0.0f);
+
     }
 
     /**
@@ -47,6 +53,20 @@ public class Animal {
      */
     public HashMap<String, Float> getNutritionData() {
         return this.nutrition;
+    }
+
+    /**
+     * @author Nate Evans 21144881
+     */
+    public String[] getLiquids() {
+        return this.liquids;
+    }
+
+    /**
+     * @author Nate Evans 21144881
+     */
+    public HashMap<String, Float> getHydrationData() {
+        return this.hydration;
     }
 
     /**
@@ -73,16 +93,17 @@ public class Animal {
                 return "";
         }
     }
-    
-    
+
     /**
-    * @author Alvina Angelin 22152692
-    */
-    
+     * @author Alvina Angelin 22152692
+     */
     public void setName(String name) {
-        this.name = name;     
+        this.name = name;
     }
-    
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
     public String getName() {
         return this.name;
     }
