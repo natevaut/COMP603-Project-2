@@ -53,7 +53,12 @@ public class Program {
             }
         } while (animal == null);
 
+        System.out.println();
+        System.out.println("Chosen pet:");
+        System.out.println(animal.toString().toUpperCase());
+        System.out.println();
         ASCII.printAnimal(animal);
+        System.out.println();
 
     }
 
