@@ -1,7 +1,6 @@
 package assignment;
 
 /**
- *
  * @author Alvina Angelin 22152692
  */
 public class ASCII {

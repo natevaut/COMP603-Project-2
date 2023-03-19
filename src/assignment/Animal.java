@@ -3,7 +3,6 @@ package assignment;
 import java.util.HashMap;
 
 /**
- *
  * @author Nate Evans 21144881
  */
 public class Animal {
@@ -56,6 +55,9 @@ public class Animal {
         return this.species;
     }
     
+    /**
+     * @author Alvina Angelin 22152692
+     */
     public String toString() {
         switch (species) {
             case DOG:
