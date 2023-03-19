@@ -53,7 +53,7 @@ public class Program {
             }
         } while (animal == null);
 
-        System.out.println(animal.getFoods()[0]);
+        ASCII.printAnimal(animal);
 
     }
 

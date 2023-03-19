@@ -52,5 +52,9 @@ public class Animal {
         return this.nutrition;
     }
     
+    public Species getSpecies() {
+        return this.species;
+    }
+    
 
 }

@@ -6,13 +6,6 @@ package assignment;
  */
 public class ASCII {
     
-    public enum Species {
-        DOG,
-        CAT,
-        HAMSTER,
-        RABBIT
-    }
-    
     public static void Dog() {
         System.out.println("    ___");
         System.out.println(" __/_  `.  .-\"\"\"-.");
@@ -50,7 +43,8 @@ public class ASCII {
         System.out.println(" {_\\______\\-'\\__\\_\\");
     }
     
-    public static void printAnimal(Species species) {
+    public static void printAnimal(Animal animal) {
+        Species species = animal.getSpecies();
         switch (species) {
             case DOG:
                 Dog();
