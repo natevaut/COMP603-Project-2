@@ -70,5 +70,14 @@ public class Animal {
                 return "";
         }
     }
-
+    
+    public String name;
+    
+    public void setName() {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
 }
