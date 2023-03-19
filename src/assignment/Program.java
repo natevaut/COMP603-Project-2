@@ -3,7 +3,6 @@ package assignment;
 import java.util.Scanner;
 
 /**
- *
  * @author Nate Evans 21144881
  */
 public class Program {
