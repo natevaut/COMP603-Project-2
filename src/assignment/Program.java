@@ -1,5 +1,6 @@
 package assignment;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -10,6 +11,7 @@ public class Program {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
 
         System.out.println("----------------");
         System.out.println("");
@@ -27,8 +29,8 @@ public class Program {
         System.out.println("[R] Rabbit");
         System.out.println("[H] Hamster");
 
+        // User selects a pet
         Animal animal = null;
-
         do {
             System.out.print("Please select a pet to look after: ");
 
@@ -51,13 +53,20 @@ public class Program {
                     System.out.println("That is not a valid pet option.");
             }
         } while (animal == null);
-
+        
+        // Name the animal
+        System.out.println("Name your animal: ");
+        String petName = scanner.nextLine();
         System.out.println();
+
+        // Print chosen pet
         System.out.println("Chosen pet:");
         System.out.println(animal.toString().toUpperCase());
         System.out.println();
+        System.out.println(animal.getName().toUpperCase());
         ASCII.printAnimal(animal);
         System.out.println();
+        
 
     }
 
