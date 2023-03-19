@@ -6,8 +6,9 @@ public class Animal {
 
     private Species species;
     private String[] foods, liquids;
-    private HashMap<String, Float> nutrition, hydration; // percentage
     private String name;
+    //percentages
+    private HashMap<String, Float> nutritionStats, hydrationStats;
 
     /**
      * @author Nate Evans 21144881
@@ -17,28 +18,28 @@ public class Animal {
 
         switch (species) {
             case DOG:
-                foods = new String[]{"Kibble", "Meat", "Bone"};
+                foods = new String[]{"kibble", "meat", "bone"};
                 break;
             case CAT:
-                foods = new String[]{"Biscuits", "Meat", "Milk"};
+                foods = new String[]{"biscuits", "meat", "tuna"};
                 break;
             case RABBIT:
-                foods = new String[]{"Lettuce", "Carrot", "Grass"};
+                foods = new String[]{"lettuce", "carrot", "grass"};
                 break;
             case HAMSTER:
-                foods = new String[]{"Seeds", "Carrot", "Pellets"};
+                foods = new String[]{"seeds", "carrot", "pellets"};
                 break;
         }
-        nutrition = new HashMap<>();
-        nutrition.put(foods[0], 0.2f);
-        nutrition.put(foods[1], 0.5f);
-        nutrition.put(foods[2], 0.1f);
+        nutritionStats = new HashMap<>();
+        nutritionStats.put(foods[0], 0.2f);
+        nutritionStats.put(foods[1], 0.5f);
+        nutritionStats.put(foods[2], 0.1f);
 
         liquids = new String[]{"water", "milk", "juice"};
-        hydration = new HashMap<>();
-        hydration.put(liquids[0], 0.7f);
-        hydration.put(liquids[1], 0.1f);
-        hydration.put(liquids[2], 0.0f);
+        hydrationStats = new HashMap<>();
+        hydrationStats.put(liquids[0], 0.7f);
+        hydrationStats.put(liquids[1], 0.1f);
+        hydrationStats.put(liquids[2], 0.0f);
 
     }
 
@@ -53,7 +54,7 @@ public class Animal {
      * @author Nate Evans 21144881
      */
     public HashMap<String, Float> getNutritionData() {
-        return this.nutrition;
+        return this.nutritionStats;
     }
 
     /**
@@ -67,7 +68,7 @@ public class Animal {
      * @author Nate Evans 21144881
      */
     public HashMap<String, Float> getHydrationData() {
-        return this.hydration;
+        return this.hydrationStats;
     }
 
     /**
