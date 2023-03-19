@@ -56,5 +56,19 @@ public class Animal {
         return this.species;
     }
     
+    public String toString() {
+        switch (species) {
+            case DOG:
+                return "Dog";
+            case CAT:
+                return "Cat";
+            case HAMSTER:
+                return "Hamster";
+            case RABBIT:
+                return "Rabbit";
+            default:
+                return "";
+        }
+    }
 
 }
