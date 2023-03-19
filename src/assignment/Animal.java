@@ -10,6 +10,7 @@ public class Animal {
     private Species species;
     private String[] foods;
     private HashMap<String, Float> nutrition;
+    private String name;
 
     public Animal(Species species) {
         this.species = species;
@@ -73,10 +74,13 @@ public class Animal {
         }
     }
     
-    public String name;
     
-    public void setName() {
-        this.name = name;
+    /**
+    * @author Alvina Angelin 22152692
+    */
+    
+    public void setName(String name) {
+        this.name = name;     
     }
     
     public String getName() {
