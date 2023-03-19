@@ -14,7 +14,6 @@ public class Animal {
      */
     public Animal(Species species) {
         this.species = species;
-        nutrition = new HashMap<>();
 
         switch (species) {
             case DOG:
@@ -30,11 +29,13 @@ public class Animal {
                 foods = new String[]{"Seeds", "Carrot", "Pellets"};
                 break;
         }
+        nutrition = new HashMap<>();
         nutrition.put(foods[0], 0.2f);
         nutrition.put(foods[1], 0.5f);
         nutrition.put(foods[2], 0.1f);
 
         liquids = new String[]{"water", "milk", "juice"};
+        hydration = new HashMap<>();
         hydration.put(liquids[0], 0.7f);
         hydration.put(liquids[1], 0.1f);
         hydration.put(liquids[2], 0.0f);
