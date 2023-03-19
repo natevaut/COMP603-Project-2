@@ -6,7 +6,7 @@ package assignment;
  */
 public class ASCII {
     
-    public static void Dog() {
+    private static void printDog() {
         System.out.println("    ___");
         System.out.println(" __/_  `.  .-\"\"\"-.");
         System.out.println(" \\_,` | \\-'  /   )`-')");
@@ -15,7 +15,7 @@ public class ASCII {
         System.out.println("(_,___/...-` (_/_/");
     }
     
-    public static void Cat() {
+    private static void printCat() {
         System.out.println(" ,_     _");
         System.out.println(" |\\\\_,-~/");
         System.out.println(" / _  _ |    ,--.");
@@ -28,13 +28,13 @@ public class ASCII {
         System.out.println(" ((_/`(____,-'");
     }
     
-    public static void Hamster() {
+    private static void printHamster() {
         System.out.println("   _-'-\"\"--o ");
         System.out.println(" ,\"\" _      \".");
         System.out.println(",)____)___),-'");
     }
     
-    public static void Rabbit() {
+    private static void printRabbit() {
         System.out.println("          ((`\\");
         System.out.println("       ___ \\\\ '--._");
         System.out.println("    .'`   `'    o  )");
@@ -47,10 +47,16 @@ public class ASCII {
         Species species = animal.getSpecies();
         switch (species) {
             case DOG:
-                Dog();
+                printDog();
                 break;
             case CAT:
-                Cat();
+                printCat();
+                break;
+            case HAMSTER:
+                printHamster();
+                break;
+            case RABBIT:
+                printRabbit();
                 break;
         }
     }
