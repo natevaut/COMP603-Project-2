@@ -122,7 +122,26 @@ public class Program {
                     break;
                 }
                 case 3: {
-                    System.out.println("lonely :(");
+                    animal.makeLonely();
+                    System.out.println(asPercent(1 - animal.getLove()) + "% lonely :(");
+
+                    String[] loving = animal.getLoveData();
+                    HashMap<String, Float> love = animal.getLoveData();
+
+                    String action = null;
+                    while (action == null) {
+                        System.out.println("What will you give " + petName + "?");
+                        System.out.printf("%s, %s, or %s\n", loving[0], loving[1], loving[2]);
+
+                        String inputAction = scanner.next().toLowerCase();
+                        if (love.containsKey(inputAction)) {
+                            action = inputAction;
+                        } else {
+                            System.out.println("That is not a valid action!");
+                        }
+                        animal.receive(action);
+                        System.out.println("Replenished " + petName + "'s love meter to " + asPercent(animal.getLove()));
+                    }
                     break;
                 }
             }
