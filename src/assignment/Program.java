@@ -110,8 +110,11 @@ public class Program {
         }
 
     }
-
-    private String asPercent(float amount) {
+    
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    private static String asPercent(float amount) {
         return String.format("%.1f%%", amount * 100);
     }
 
