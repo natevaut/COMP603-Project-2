@@ -145,7 +145,7 @@ public class Animal {
      */
     public void eat(String food) {
         if(nutritionStats.containsKey(food)) {
-            float nutritionValue = nutritionStats.get(food);
+            double nutritionValue = nutritionStats.get(food);
             nutrition += nutritionValue;
         }
         else {
@@ -158,7 +158,7 @@ public class Animal {
      */
     public void drink (String liquid) {
         if (hydrationStats.containsKey(liquid)) {
-            float hydrationValue = hydrationStats.get(liquid);
+            double hydrationValue = hydrationStats.get(liquid);
             hydration += hydrationValue;
         }
         else {
