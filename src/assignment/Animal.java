@@ -7,8 +7,8 @@ public class Animal {
     private Species species;
     private String[] foods, liquids;
     private String name;
-    private double nutrition;
-    private double hydration;
+    private float nutrition;
+    private float hydration;
     //percentages
     private HashMap<String, Float> nutritionStats, hydrationStats;
 
@@ -115,28 +115,28 @@ public class Animal {
     /**
      * @author Alvina Angelin 22152692
      */
-    public void setHydration(double hydration) {
+    public void setHydration(float hydration) {
         this.hydration = hydration;
     }
     
      /**
      * @author Alvina Angelin 22152692
      */
-    public double hydration() {
+    public float hydration() {
         return this.hydration;
     }
     
     /**
      * @author Alvina Angelin 22152692
      */
-    public void setNutrition(double nutrition) {
+    public void setNutrition(float nutrition) {
         this.nutrition = nutrition;
     }
     
     /**
      * @author Alvina Angelin 22152692
      */
-    public double getNutrition() {
+    public float getNutrition() {
         return this.nutrition;
     }
     
@@ -145,7 +145,7 @@ public class Animal {
      */
     public void eat(String food) {
         if(nutritionStats.containsKey(food)) {
-            double nutritionValue = nutritionStats.get(food);
+            float nutritionValue = nutritionStats.get(food);
             nutrition += nutritionValue;
         }
         else {
@@ -158,7 +158,7 @@ public class Animal {
      */
     public void drink (String liquid) {
         if (hydrationStats.containsKey(liquid)) {
-            double hydrationValue = hydrationStats.get(liquid);
+            float hydrationValue = hydrationStats.get(liquid);
             hydration += hydrationValue;
         }
         else {
