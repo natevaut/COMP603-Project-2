@@ -71,12 +71,12 @@ public class Program {
         System.out.println();
 
         // Keep the animal alive
-        HashMap<String, Float> hydration = animal.getHydrationData();
         while (true) {
             int need = rand.nextInt(4);
             System.out.print(petName + " is ");
             switch (need) {
                 case 1: {
+                    animal.makeHungry();
                     System.out.println(asPercent(1 - animal.getNutrition()) + "% hungry!");
 
                     String[] foods = animal.getFoods();
@@ -99,7 +99,26 @@ public class Program {
                     break;
                 }
                 case 2: {
-                    System.out.println("thirsty!");
+                    animal.makeThirsty();
+                    System.out.println(asPercent(1 - animal.getHydration()) + "% thirsty!");
+
+                    String[] drinks = animal.getLiquids();
+                    HashMap<String, Float> hydration = animal.getHydrationData();
+
+                    String drink = null;
+                    while (drink == null) {
+                        System.out.println("What will you give " + petName + "?");
+                        System.out.printf("%s, %s, or %s\n", drinks[0], drinks[1], drinks[2]);
+
+                        String inputDrink = scanner.next().toLowerCase();
+                        if (hydration.containsKey(inputDrink)) {
+                            drink = inputDrink;
+                        } else {
+                            System.out.println("That is not a valid drink!");
+                        }
+                        animal.drink(drink);
+                        System.out.println("Replenished " + petName + "'s thirst to " + asPercent(animal.getHydration()));
+                    }
                     break;
                 }
                 case 3: {

@@ -122,7 +122,7 @@ public class Animal {
      /**
      * @author Alvina Angelin 22152692
      */
-    public float hydration() {
+    public float getHydration() {
         return this.hydration;
     }
     
