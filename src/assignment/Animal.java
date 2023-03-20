@@ -9,7 +9,6 @@ public class Animal {
     private String name;
     private float nutrition;
     private float hydration;
-    //percentages
     private HashMap<String, Float> nutritionStats, hydrationStats;
 
     /**
@@ -111,57 +110,55 @@ public class Animal {
     public String getName() {
         return this.name;
     }
-    
+
     /**
      * @author Alvina Angelin 22152692
      */
     public void setHydration(float hydration) {
         this.hydration = hydration;
     }
-    
-     /**
+
+    /**
      * @author Alvina Angelin 22152692
      */
     public float getHydration() {
         return this.hydration;
     }
-    
+
     /**
      * @author Alvina Angelin 22152692
      */
     public void setNutrition(float nutrition) {
         this.nutrition = nutrition;
     }
-    
+
     /**
      * @author Alvina Angelin 22152692
      */
     public float getNutrition() {
         return this.nutrition;
     }
-    
+
     /**
      * @author Alvina Angelin 22152692
      */
     public void eat(String food) {
-        if(nutritionStats.containsKey(food)) {
+        if (nutritionStats.containsKey(food)) {
             float nutritionValue = nutritionStats.get(food);
             nutrition += nutritionValue;
-        }
-        else {
+        } else {
             System.out.println("Invalid input");
         }
     }
-    
+
     /**
      * @author Alvina Angelin 22152692
      */
-    public void drink (String liquid) {
+    public void drink(String liquid) {
         if (hydrationStats.containsKey(liquid)) {
             float hydrationValue = hydrationStats.get(liquid);
             hydration += hydrationValue;
-        }
-        else {
+        } else {
             System.out.println("Invalid input");
         }
     }

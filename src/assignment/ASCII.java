@@ -4,7 +4,7 @@ package assignment;
  * @author Alvina Angelin 22152692
  */
 public class ASCII {
-    
+
     private static void printDog() {
         System.out.println("    ___");
         System.out.println(" __/_  `.  .-\"\"\"-.");
@@ -13,7 +13,7 @@ public class ASCII {
         System.out.println(" ___Y  ,    .'7 /|");
         System.out.println("(_,___/...-` (_/_/");
     }
-    
+
     private static void printCat() {
         System.out.println(" ,_     _");
         System.out.println(" |\\\\_,-~/");
@@ -26,13 +26,13 @@ public class ASCII {
         System.out.println("  || |-_\\__   /");
         System.out.println(" ((_/`(____,-'");
     }
-    
+
     private static void printHamster() {
         System.out.println("   _-'-\"\"--o ");
         System.out.println(" ,\"\" _      \".");
         System.out.println(",)____)___),-'");
     }
-    
+
     private static void printRabbit() {
         System.out.println("          ((`\\");
         System.out.println("       ___ \\\\ '--._");
@@ -41,7 +41,7 @@ public class ASCII {
         System.out.println("  _|    /_  \\ \\_\\_");
         System.out.println(" {_\\______\\-'\\__\\_\\");
     }
-    
+
     public static void printAnimal(Animal animal) {
         Species species = animal.getSpecies();
         switch (species) {
