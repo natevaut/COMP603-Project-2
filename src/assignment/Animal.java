@@ -5,11 +5,10 @@ import java.util.HashMap;
 public class Animal {
 
     private Species species;
-    private String[] foods, liquids;
+    private String[] foods, liquids, actions;
     private String name;
-    private float nutrition;
-    private float hydration;
-    private HashMap<String, Float> nutritionStats, hydrationStats;
+    private float nutrition, hydration, love;
+    private HashMap<String, Float> nutritionStats, hydrationStats, loveStats;
 
     /**
      * @author Nate Evans 21144881
@@ -41,6 +40,11 @@ public class Animal {
         hydrationStats.put(liquids[0], 0.7f);
         hydrationStats.put(liquids[1], 0.1f);
         hydrationStats.put(liquids[2], 0.0f);
+
+        actions = new String[]{"pat", "hug", "kiss"};
+        loveStats.put(actions[0], 0.4f);
+        loveStats.put(actions[1], 0.3f);
+        loveStats.put(actions[2], 0.1f);
 
     }
 
