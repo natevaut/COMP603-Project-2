@@ -108,6 +108,10 @@ public class Animal {
                 return "";
         }
     }
+    
+    public String[] getActions() {
+        return this.actions;
+    }
 
     /**
      * @author Alvina Angelin 22152692
@@ -201,18 +205,9 @@ public class Animal {
     /**
      * @author Alvina Angelin 22152692
      */
-    public float decreaseStats(float value, float percentage) {
-        float amount = (float) Math.round(value * (percentage / 100.0));
-        return Math.max(value - amount, 0);
-    }
-
-    /**
-     * @author Alvina Angelin 22152692
-     */
     public void makeHungry() {
         Random random = new Random();
-        float decrease = random.nextFloat(0.4f) + 0.1f;
-        this.nutrition = decreaseStats(this.nutrition, decrease);
+        this.nutrition -= random.nextFloat(0.4f) + 0.1f;
     }
 
     /**
@@ -220,8 +215,7 @@ public class Animal {
      */
     public void makeThirsty() {
         Random random = new Random();
-        float decrease = random.nextFloat(0.4f) + 0.1f;
-        this.hydration = decreaseStats(this.hydration, decrease);
+        this.hydration -= random.nextFloat(0.4f) + 0.1f;
     }
 
     /**
@@ -229,8 +223,7 @@ public class Animal {
      */
     public void makeLonely() {
         Random random = new Random();
-        float decrease = random.nextFloat(0.4f) + 0.1f;
-        this.love = decreaseStats(this.love, decrease);
+        this.love -= random.nextFloat(0.4f) + 0.1f;
     }
 
 }
