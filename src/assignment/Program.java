@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
+    /** @author Nate Evans 21144881 */
 public class Program {
 
     private static boolean running;
 
-    /** @author Nate Evans 21144881 */
     public static void main(String[] args) {
         running = true;
 
@@ -34,6 +34,7 @@ public class Program {
         Animal animal = null;
         do {
             System.out.print("Please select a pet to look after: ");
+            // TODO: or load one from disc!
 
             char petChar = scanner.nextLine().toUpperCase().charAt(0);
 
@@ -73,7 +74,6 @@ public class Program {
         life(scanner, animal);
     }
 
-    /** @author Nate Evans 21144881 */
     private static void life(Scanner scanner, Animal animal) {
         Random rand = new Random();
 
@@ -156,15 +156,16 @@ public class Program {
 
             char input;
             System.out.println("Do you want to continue with your pet?");
-            input = scanner.next().charAt(0);
-            if (input == 'n') {
+            input = scanner.next().toLowerCase().charAt(0);
+            if (input != 'y') {
+                // TODO: save pet to a file!
+                System.out.println("Exiting program");
                 running = false;
             }
         }
 
     }
 
-    /** @author Alvina Angelin 22152692 */
     private static String asPercent(float amount) {
         return String.format("%.1f%%", amount * 100);
     }
