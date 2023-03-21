@@ -85,6 +85,10 @@ public class Animal {
         return this.species;
     }
 
+    public String[] getActions() {
+        return this.actions;
+    }
+
     /**
      * @author Alvina Angelin 22152692
      */
@@ -108,10 +112,6 @@ public class Animal {
             default:
                 return "";
         }
-    }
-    
-    public String[] getActions() {
-        return this.actions;
     }
 
     /**
@@ -208,7 +208,7 @@ public class Animal {
      */
     public void makeHungry() {
         Random random = new Random();
-        this.nutrition -= random.nextFloat(0.4f) + 0.1f;
+        this.nutrition -= random.nextInt(100) / 100;
     }
 
     /**
@@ -216,7 +216,7 @@ public class Animal {
      */
     public void makeThirsty() {
         Random random = new Random();
-        this.hydration -= random.nextFloat(0.4f) + 0.1f;
+        this.hydration -= random.nextInt(100) / 100;
     }
 
     /**
@@ -224,7 +224,7 @@ public class Animal {
      */
     public void makeLonely() {
         Random random = new Random();
-        this.love -= random.nextFloat(0.4f) + 0.1f;
+        this.love -= random.nextInt(100) / 100;
     }
 
 }
