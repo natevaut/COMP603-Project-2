@@ -87,6 +87,13 @@ public class Animal {
     /**
      * @author Alvina Angelin 22152692
      */
+    public HashMap<String, Float> getLoveData() {
+        return this.loveStats;
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
     public String toString() {
         switch (species) {
             case DOG:
@@ -180,7 +187,10 @@ public class Animal {
         }
     }
 
-    public void lonely(String actions) {
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    public void receive(String actions) {
         if (loveStats.containsKey(actions)) {
             love = loveStats.get(actions);
         } else {
