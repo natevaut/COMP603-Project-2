@@ -209,21 +209,21 @@ public class Animal {
     public void makeHungry() {
         Random random = new Random();
         this.nutrition -= random.nextInt(100) / 100;
-        
-        if(nutrition <= 0) {
-            nutrition = 0;
+
+        if (this.nutrition <= 0) {
+            this.nutrition = 0;
         }
     }
-
+    
     /**
      * @author Alvina Angelin 22152692
      */
     public void makeThirsty() {
         Random random = new Random();
         this.hydration -= random.nextInt(100) / 100;
-        
-        if(hydration <= 0) {
-            hydration = 0;
+
+        if (this.hydration <= 0) {
+            this.hydration = 0;
         }
     }
 
@@ -233,9 +233,9 @@ public class Animal {
     public void makeLonely() {
         Random random = new Random();
         this.love -= random.nextInt(100) / 100;
-        
-        if(love <= 0) {
-            love = 0;
+
+        if (this.love < 0) {
+            this.love = 0;
         }
     }
 
