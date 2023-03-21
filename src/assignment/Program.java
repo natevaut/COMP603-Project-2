@@ -73,22 +73,21 @@ public class Program {
         System.out.println();
 
         // Keep the animal alive
-        life(animal);
+        life(scanner, animal);
     }
 
-    private static void life(Animal animal) {
-        Scanner scanner = new Scanner(System.in);
+    private static void life(Scanner scanner, Animal animal) {
         Random rand = new Random();
 
         String petName = animal.getName();
 
         while (running) {
-            int need = rand.nextInt(4);
+            int need = rand.nextInt(3);
             System.out.print(petName + " is ");
             switch (need) {
-                case 1: {
+                case 0: {
                     animal.makeHungry();
-                    System.out.println(asPercent(1 - animal.getNutrition()) + "% hungry!");
+                    System.out.println(asPercent(1 - animal.getNutrition()) + " hungry!");
 
                     String[] foods = animal.getFoods();
                     HashMap<String, Float> nutrition = animal.getNutritionData();
@@ -109,9 +108,9 @@ public class Program {
                     }
                     break;
                 }
-                case 2: {
+                case 1: {
                     animal.makeThirsty();
-                    System.out.println(asPercent(1 - animal.getHydration()) + "% thirsty!");
+                    System.out.println(asPercent(1 - animal.getHydration()) + " thirsty!");
 
                     String[] drinks = animal.getLiquids();
                     HashMap<String, Float> hydration = animal.getHydrationData();
@@ -132,9 +131,9 @@ public class Program {
                     }
                     break;
                 }
-                case 3: {
+                case 2: {
                     animal.makeLonely();
-                    System.out.println(asPercent(1 - animal.getLove()) + "% lonely :(");
+                    System.out.println(asPercent(1 - animal.getLove()) + " lonely :(");
 
                     String[] loving = animal.getActions();
                     HashMap<String, Float> love = animal.getLoveData();
@@ -158,8 +157,8 @@ public class Program {
             }
 
             char input;
-            System.out.println("Do you want to continue with you pet?");
-            input = scanner.nextLine().charAt(0);
+            System.out.println("Do you want to continue with your pet?");
+            input = scanner.next().charAt(0);
             if (input == 'n') {
                 running = false;
             }
