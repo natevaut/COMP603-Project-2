@@ -125,7 +125,7 @@ public class Program {
                     animal.makeLonely();
                     System.out.println(asPercent(1 - animal.getLove()) + "% lonely :(");
 
-                    String[] loving = animal.getLoveData();
+                    String[] loving = animal.getActions();
                     HashMap<String, Float> love = animal.getLoveData();
 
                     String action = null;
