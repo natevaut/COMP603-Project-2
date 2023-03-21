@@ -10,10 +10,12 @@ import java.util.Scanner;
  */
 public class Program {
 
+    private static boolean running;
+
     public static void main(String[] args) {
+        running = true;
 
         Scanner scanner = new Scanner(System.in);
-        Random rand = new Random();
 
         System.out.println("----------------");
         System.out.println("");
@@ -71,7 +73,16 @@ public class Program {
         System.out.println();
 
         // Keep the animal alive
-        while (true) {
+        life(animal);
+    }
+
+    private static void life(Animal animal) {
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+
+        String petName = animal.getName();
+
+        while (running) {
             int need = rand.nextInt(4);
             System.out.print(petName + " is ");
             switch (need) {
@@ -144,6 +155,13 @@ public class Program {
                     }
                     break;
                 }
+            }
+
+            char input;
+            System.out.println("Do you want to continue with you pet?");
+            input = scanner.nextLine().charAt(0);
+            if (input == 'n') {
+                running = false;
             }
         }
 
