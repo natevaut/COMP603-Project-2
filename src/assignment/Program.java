@@ -10,7 +10,10 @@ import java.util.Scanner;
  */
 public class Program {
 
+    private static boolean running;
+
     public static void main(String[] args) {
+        running = true;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -79,7 +82,7 @@ public class Program {
 
         String petName = animal.getName();
 
-        while (true) {
+        while (running) {
             int need = rand.nextInt(4);
             System.out.print(petName + " is ");
             switch (need) {

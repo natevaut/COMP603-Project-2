@@ -6,8 +6,8 @@ import java.util.Random;
 public class Animal {
 
     private Species species;
-    private String[] foods, liquids, actions;
     private String name;
+    private String[] foods, liquids, actions;
     private float nutrition, hydration, love;
     private HashMap<String, Float> nutritionStats, hydrationStats, loveStats;
 
