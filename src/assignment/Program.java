@@ -13,7 +13,6 @@ public class Program {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Random rand = new Random();
 
         System.out.println("----------------");
         System.out.println("");
@@ -71,6 +70,15 @@ public class Program {
         System.out.println();
 
         // Keep the animal alive
+        life(animal);
+    }
+
+    private static void life(Animal animal) {
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+
+        String petName = animal.getName();
+
         while (true) {
             int need = rand.nextInt(4);
             System.out.print(petName + " is ");
