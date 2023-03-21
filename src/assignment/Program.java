@@ -156,6 +156,13 @@ public class Program {
                     break;
                 }
             }
+
+            char input;
+            System.out.println("Do you want to continue with you pet?");
+            input = scanner.nextLine().charAt(0);
+            if (input == 'n') {
+                running = false;
+            }
         }
 
     }
