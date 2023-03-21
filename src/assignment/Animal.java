@@ -43,6 +43,7 @@ public class Animal {
         hydrationStats.put(liquids[2], 0.0f);
 
         actions = new String[]{"pat", "hug", "kiss"};
+        loveStats = new HashMap<>();
         loveStats.put(actions[0], 0.4f);
         loveStats.put(actions[1], 0.3f);
         loveStats.put(actions[2], 0.1f);
