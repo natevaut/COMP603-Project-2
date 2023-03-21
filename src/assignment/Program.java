@@ -1,13 +1,10 @@
 package assignment;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * @author Nate Evans 21144881
- */
+    /** @author Nate Evans 21144881 */
 public class Program {
 
     private static boolean running;
@@ -37,6 +34,7 @@ public class Program {
         Animal animal = null;
         do {
             System.out.print("Please select a pet to look after: ");
+            // TODO: or load one from disc!
 
             char petChar = scanner.nextLine().toUpperCase().charAt(0);
 
@@ -158,17 +156,16 @@ public class Program {
 
             char input;
             System.out.println("Do you want to continue with your pet?");
-            input = scanner.next().charAt(0);
-            if (input == 'n') {
+            input = scanner.next().toLowerCase().charAt(0);
+            if (input != 'y') {
+                // TODO: save pet to a file!
+                System.out.println("Exiting program");
                 running = false;
             }
         }
 
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
     private static String asPercent(float amount) {
         return String.format("%.1f%%", amount * 100);
     }

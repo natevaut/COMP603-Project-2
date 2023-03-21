@@ -11,9 +11,7 @@ public class Animal {
     private float nutrition, hydration, love;
     private HashMap<String, Float> nutritionStats, hydrationStats, loveStats;
 
-    /**
-     * @author Nate Evans 21144881
-     */
+    /** @author Nate Evans 21144881 */
     public Animal(Species species) {
         this.species = species;
 
@@ -50,37 +48,27 @@ public class Animal {
 
     }
 
-    /**
-     * @author Nate Evans 21144881
-     */
+    /** @author Nate Evans 21144881 */
     public String[] getFoods() {
         return this.foods;
     }
 
-    /**
-     * @author Nate Evans 21144881
-     */
+    /** @author Nate Evans 21144881 */
     public HashMap<String, Float> getNutritionData() {
         return this.nutritionStats;
     }
 
-    /**
-     * @author Nate Evans 21144881
-     */
+    /** @author Nate Evans 21144881 */
     public String[] getLiquids() {
         return this.liquids;
     }
 
-    /**
-     * @author Nate Evans 21144881
-     */
+    /** @author Nate Evans 21144881 */
     public HashMap<String, Float> getHydrationData() {
         return this.hydrationStats;
     }
 
-    /**
-     * @author Nate Evans 21144881
-     */
+    /** @author Nate Evans 21144881 */
     public Species getSpecies() {
         return this.species;
     }
@@ -89,16 +77,12 @@ public class Animal {
         return this.actions;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public HashMap<String, Float> getLoveData() {
         return this.loveStats;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public String toString() {
         switch (species) {
             case DOG:
@@ -114,92 +98,68 @@ public class Animal {
         }
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public String getName() {
         return this.name;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void setHydration(float hydration) {
         this.hydration = hydration;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public float getHydration() {
         return this.hydration;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void setNutrition(float nutrition) {
         this.nutrition = nutrition;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public float getNutrition() {
         return this.nutrition;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void setLove(float love) {
         this.love = love;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public float getLove() {
         return this.love;
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void eat(String food) {
         if (nutritionStats.containsKey(food)) {
             nutrition += nutritionStats.get(food);
         }
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void drink(String liquid) {
         if (hydrationStats.containsKey(liquid)) {
             hydration = hydrationStats.get(liquid);
         }
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void receive(String actions) {
         if (loveStats.containsKey(actions)) {
             love = loveStats.get(actions);
         }
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void makeHungry() {
         Random random = new Random();
         this.nutrition -= random.nextInt(100) / 100;
@@ -208,10 +168,8 @@ public class Animal {
             this.nutrition = 0;
         }
     }
-    
-    /**
-     * @author Alvina Angelin 22152692
-     */
+
+    /** @author Alvina Angelin 22152692 */
     public void makeThirsty() {
         Random random = new Random();
         this.hydration -= random.nextInt(100) / 100;
@@ -221,9 +179,7 @@ public class Animal {
         }
     }
 
-    /**
-     * @author Alvina Angelin 22152692
-     */
+    /** @author Alvina Angelin 22152692 */
     public void makeLonely() {
         Random random = new Random();
         this.love -= random.nextInt(100) / 100;
