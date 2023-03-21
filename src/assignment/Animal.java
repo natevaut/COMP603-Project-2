@@ -148,8 +148,7 @@ public class Animal {
      */
     public void eat(String food) {
         if (nutritionStats.containsKey(food)) {
-            float nutritionValue = nutritionStats.get(food);
-            nutrition += nutritionValue;
+            nutrition += nutritionStats.get(food);
         } else {
             System.out.println("Invalid input");
         }
@@ -160,10 +159,11 @@ public class Animal {
      */
     public void drink(String liquid) {
         if (hydrationStats.containsKey(liquid)) {
-            float hydrationValue = hydrationStats.get(liquid);
-            hydration += hydrationValue;
+            hydration = hydrationStats.get(liquid);
         } else {
             System.out.println("Invalid input");
         }
     }
+    
+    
 }
