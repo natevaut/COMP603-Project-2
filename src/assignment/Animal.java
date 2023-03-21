@@ -1,6 +1,7 @@
 package assignment;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class Animal {
 
@@ -146,6 +147,20 @@ public class Animal {
     /**
      * @author Alvina Angelin 22152692
      */
+    public void setLove(float love) {
+        this.love = love;
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    public float getLove() {
+        return this.love;
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
     public void eat(String food) {
         if (nutritionStats.containsKey(food)) {
             nutrition += nutritionStats.get(food);
@@ -164,6 +179,48 @@ public class Animal {
             System.out.println("Invalid input");
         }
     }
-    
-    
+
+    public void lonely(String actions) {
+        if (loveStats.containsKey(actions)) {
+            love = loveStats.get(actions);
+        } else {
+            System.out.println("Invalid input");
+        }
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    public float decreaseStats(float value, float percentage) {
+        float amount = (float) Math.round(value * (percentage / 100.0));
+        return Math.max(value - amount, 0);
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    public void makeHungry() {
+        Random random = new Random();
+        float decrease = random.nextFloat(0.4f) + 0.1f;
+        this.nutrition = decreaseStats(this.nutrition, decrease);
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    public void makeThirsty() {
+        Random random = new Random();
+        float decrease = random.nextFloat(0.4f) + 0.1f;
+        this.hydration = decreaseStats(this.hydration, decrease);
+    }
+
+    /**
+     * @author Alvina Angelin 22152692
+     */
+    public void makeLonely() {
+        Random random = new Random();
+        float decrease = random.nextFloat(0.4f) + 0.1f;
+        this.love = decreaseStats(this.love, decrease);
+    }
+
 }
