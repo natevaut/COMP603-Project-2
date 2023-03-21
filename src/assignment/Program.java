@@ -124,7 +124,7 @@ public class Program {
                         if (hydration.containsKey(inputDrink)) {
                             drink = inputDrink;
                         } else {
-                            System.out.println("That is not a valid drink!");
+                            System.out.println("That is not a valid drink!\n");
                         }
                         animal.drink(drink);
                         System.out.println("Replenished " + petName + "'s thirst to " + asPercent(animal.getHydration()));

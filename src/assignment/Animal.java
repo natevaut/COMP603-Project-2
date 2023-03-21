@@ -176,8 +176,6 @@ public class Animal {
     public void eat(String food) {
         if (nutritionStats.containsKey(food)) {
             nutrition += nutritionStats.get(food);
-        } else {
-            System.out.println("Invalid input");
         }
     }
 
@@ -187,8 +185,6 @@ public class Animal {
     public void drink(String liquid) {
         if (hydrationStats.containsKey(liquid)) {
             hydration = hydrationStats.get(liquid);
-        } else {
-            System.out.println("Invalid input");
         }
     }
 
@@ -198,8 +194,6 @@ public class Animal {
     public void receive(String actions) {
         if (loveStats.containsKey(actions)) {
             love = loveStats.get(actions);
-        } else {
-            System.out.println("Invalid input");
         }
     }
 
