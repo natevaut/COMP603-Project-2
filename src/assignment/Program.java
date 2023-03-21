@@ -99,7 +99,7 @@ public class Program {
                         if (nutrition.containsKey(inputFood)) {
                             food = inputFood;
                         } else {
-                            System.out.println("That is not a valid food!");
+                            System.out.println("That is not a valid food!\n");
                         }
                         animal.eat(food);
                         System.out.println("Replenished " + petName + "'s hunger to " + asPercent(animal.getNutrition()));
@@ -145,7 +145,7 @@ public class Program {
                         if (love.containsKey(inputAction)) {
                             action = inputAction;
                         } else {
-                            System.out.println("That is not a valid action!");
+                            System.out.println("That is not a valid action!\n");
                         }
                         animal.receive(action);
                         System.out.println("Replenished " + petName + "'s love meter to " + asPercent(animal.getLove()));
