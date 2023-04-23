@@ -33,12 +33,11 @@ public class FileIO {
 	}
 
 	public static Animal loadFromFile() {
-		BufferedReader br;
 		try {
-			br = new BufferedReader(new FileReader(FILENAME));
+			BufferedReader br = new BufferedReader(new FileReader(FILENAME));
 
-			String species = null, name;
-			float nutrition, hydration, love;
+			String species = null, name = null;
+			float nutrition = 0, hydration = 0, love = 0;
 
 			for (String line = ""; (line = br.readLine()) != null;) {
 				String[] parts = line.split("=");
@@ -65,15 +64,15 @@ public class FileIO {
 			else if (species.equals("Hamster"))
 				animal = new Hamster();
 			animal.loadAttributes(name, nutrition, hydration, love);
+
+			br.close();
+
 			return animal;
 
 		} catch (FileNotFoundException e) {
 			return null;
 		} catch (IOException e) {
 			return null;
-		} finally {
-
-			br.close();
 		}
 	}
 
