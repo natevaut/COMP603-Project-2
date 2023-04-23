@@ -24,50 +24,56 @@ public class Program {
         System.out.println("Welcome to PET SIMULATOR.");
         System.out.println("Please adopt a pet!");
         System.out.println("");
-        System.out.println("You have four animals to choose from:");
-        System.out.println("[D] Dog");
-        System.out.println("[C] Cat");
-        System.out.println("[R] Rabbit");
-        System.out.println("[H] Hamster");
 
-        // User selects a pet
         Animal animal = null;
-        do {
-            System.out.print("Please select a pet to look after: ");
-            // TODO: or load one from disc!
+        
+        System.out.println("Do you already have a pet?");
+        char ans = scanner.next().charAt(0);
 
-            char petChar = scanner.nextLine().toUpperCase().charAt(0);
+        // load one from disc
+        if (ans == 'y') {
+        	
+            animal = FileIO.loadFromFile();
 
-            switch (petChar) {
-                case 'D':
-                    animal = new Animal(Species.DOG);
-                    break;
-                case 'C':
-                    animal = new Animal(Species.CAT);
-                    break;
-                case 'R':
-                    animal = new Animal(Species.RABBIT);
-                    break;
-                case 'H':
-                    animal = new Animal(Species.HAMSTER);
-                    break;
-                default:
+        } else {
+        
+            System.out.println("You have four animals to choose from:");
+            System.out.println("[D] Dog");
+            System.out.println("[C] Cat");
+            System.out.println("[R] Rabbit");
+            System.out.println("[H] Hamster");
+            System.out.println("");
+
+            // User selects a pet
+            do {
+                System.out.print("Please select a pet to look after: ");
+                String pet = scanner.nextLine().toLowerCase();
+                if (pet.equals("dog"))
+                    animal = new Dog();
+                else if (pet.equals("cat"))
+                    animal = new Cat();
+                else if (pet.equals("rabbit"))
+                    animal = new Rabbit();
+                else if (pet.equals("hamster"))
+                    animal = new Hamster();
+                else 
                     System.out.println("That is not a valid pet option.");
-            }
-        } while (animal == null);
+            } while (animal == null);
 
-        // Name the animal
-        System.out.print("Name your animal: ");
-        String petName = scanner.nextLine();
-        animal.setName(petName);
-        System.out.println();
+            // Name the animal
+            System.out.print("Name your animal: ");
+            String petName = scanner.nextLine();
+            animal.setName(petName);
+            System.out.println();
+        
+        }
 
-        // Print chosen pet
-        System.out.println("Chosen pet:");
+        // Print pet
+        System.out.println("Your pet:");
         System.out.println(animal.toString().toUpperCase());
         System.out.println();
         ASCII.printAnimal(animal);
-        System.out.println(petName.toUpperCase());
+        System.out.println(animal.getName().toUpperCase());
         System.out.println();
 
         // Keep the animal alive
@@ -158,6 +164,7 @@ public class Program {
             System.out.println("Do you want to continue with your pet?");
             input = scanner.next().toLowerCase().charAt(0);
             if (input != 'y') {
+                System.out.println("Saving animal to file...");
                 FileIO.saveToFile(animal);
                 System.out.println("Exiting program");
                 running = false;
