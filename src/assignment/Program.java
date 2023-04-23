@@ -13,6 +13,7 @@ public class Program {
         running = true;
 
         Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
 
         System.out.println("----------------");
         System.out.println("");
@@ -81,22 +82,15 @@ public class Program {
         }
 
         // Print pet
+        String petName = animal.getName();
         System.out.println("Your pet:");
         System.out.println(animal.toString().toUpperCase());
         System.out.println();
         ASCII.printAnimal(animal);
-        System.out.println(animal.getName().toUpperCase());
+        System.out.println(petName.toUpperCase());
         System.out.println();
 
         // Keep the animal alive
-        life(scanner, animal);
-    }
-
-    private static void life(Scanner scanner, Animal animal) {
-        Random rand = new Random();
-
-        String petName = animal.getName();
-
         // main loop
         while (running) {
             int need = rand.nextInt(3);
@@ -185,6 +179,8 @@ public class Program {
                 running = false;
             }
         }
+        
+        scanner.close();
 
     }
 

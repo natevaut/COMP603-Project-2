@@ -39,6 +39,7 @@ public class FileIO {
 			String species = null, name = null;
 			float nutrition = 0, hydration = 0, love = 0;
 
+			// load the file contents
 			for (String line = ""; (line = br.readLine()) != null;) {
 				String[] parts = line.split("=");
 				String key = parts[0], val = parts[1];
@@ -54,6 +55,7 @@ public class FileIO {
 					love = Float.parseFloat(val);
 			}
 
+			// initialise the animal with the loaded data
 			Animal animal = null;
 			if (species.equals("dog"))
 				animal = new Dog();
