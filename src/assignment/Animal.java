@@ -5,43 +5,26 @@ import java.util.Random;
 
 public class Animal {
 
-    private Species species;
-    private String name;
-    private String[] foods, liquids, actions;
-    private float nutrition, hydration, love;
-    private HashMap<String, Float> nutritionStats, hydrationStats, loveStats;
+    protected Species species;
+    protected String name;
+    protected String[] foods, liquids, actions;
+    protected float nutrition, hydration, love;
+    protected HashMap<String, Float> nutritionStats, hydrationStats, loveStats;
 
     /** @author Nate Evans 21144881 */
-    public Animal(Species species) {
-        this.species = species;
-
-        switch (species) {
-            case DOG:
-                foods = new String[]{"kibble", "meat", "bone"};
-                break;
-            case CAT:
-                foods = new String[]{"biscuits", "meat", "tuna"};
-                break;
-            case RABBIT:
-                foods = new String[]{"lettuce", "carrot", "grass"};
-                break;
-            case HAMSTER:
-                foods = new String[]{"seeds", "carrot", "pellets"};
-                break;
-        }
+    public Animal() {
         nutritionStats = new HashMap<>();
-        nutritionStats.put(foods[0], 0.2f);
-        nutritionStats.put(foods[1], 0.5f);
-        nutritionStats.put(foods[2], 0.1f);
-
-        liquids = new String[]{"water", "milk", "juice"};
         hydrationStats = new HashMap<>();
+        loveStats = new HashMap<>();
+
+        foods = null; // done in subclasses
+        
+        liquids = new String[]{"water", "milk", "juice"};
         hydrationStats.put(liquids[0], 0.7f);
         hydrationStats.put(liquids[1], 0.1f);
         hydrationStats.put(liquids[2], 0.0f);
 
         actions = new String[]{"pat", "hug", "kiss"};
-        loveStats = new HashMap<>();
         loveStats.put(actions[0], 0.4f);
         loveStats.put(actions[1], 0.3f);
         loveStats.put(actions[2], 0.1f);
@@ -81,22 +64,6 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public HashMap<String, Float> getLoveData() {
         return this.loveStats;
-    }
-
-    /** @author Alvina Angelin 22152692 */
-    public String toString() {
-        switch (species) {
-            case DOG:
-                return "Dog";
-            case CAT:
-                return "Cat";
-            case HAMSTER:
-                return "Hamster";
-            case RABBIT:
-                return "Rabbit";
-            default:
-                return "";
-        }
     }
 
     /** @author Alvina Angelin 22152692 */
