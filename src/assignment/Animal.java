@@ -32,6 +32,14 @@ public class Animal {
     }
 
     /** @author Nate Evans 21144881 */
+    public void loadAttributes(String name, float n, float h, float l) {
+        this.name = name;
+        nutrition = n;
+        hydration = h;
+        love = l;
+    }
+
+    /** @author Nate Evans 21144881 */
     public String[] getFoods() {
         return this.foods;
     }
