@@ -27,6 +27,7 @@ public class Program {
 
         Animal animal = null;
         
+        // ask if user has pet already saved to disc
         char ans = '\0';
         while (true) {
             System.out.println("Do you already have a pet?");
@@ -40,7 +41,11 @@ public class Program {
         // load one from disc
         if (ans == 'y') {
         	
+            System.out.println("Loading pet from disc...");
             animal = FileIO.loadFromFile();
+            String species = animal.getSpecies().toString().toLowerCase();
+            System.out.println("Loaded your pet " + species + ": " + animal.getName());
+            System.out.println();
 
         } else {
         
@@ -92,6 +97,7 @@ public class Program {
 
         String petName = animal.getName();
 
+        // main loop
         while (running) {
             int need = rand.nextInt(3);
             System.out.println();
@@ -171,8 +177,9 @@ public class Program {
             char input;
             System.out.println("Do you want to continue with your pet?");
             input = scanner.next().toLowerCase().charAt(0);
+            // save pet to disc and exit
             if (input != 'y') {
-                System.out.println("Saving animal to file...");
+                System.out.println("Saving pet to file...");
                 FileIO.saveToFile(animal);
                 System.out.println("Exiting program");
                 running = false;
