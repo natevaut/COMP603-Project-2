@@ -27,8 +27,15 @@ public class Program {
 
         Animal animal = null;
         
-        System.out.println("Do you already have a pet?");
-        char ans = scanner.next().charAt(0);
+        char ans = '\0';
+        while (true) {
+            System.out.println("Do you already have a pet?");
+            ans = scanner.nextLine().charAt(0);
+            if (ans == 'y' || ans == 'n')
+                break;
+            System.out.println("Invalid answer!");
+        }
+        System.out.println();
 
         // load one from disc
         if (ans == 'y') {
@@ -42,7 +49,7 @@ public class Program {
             System.out.println("- Cat");
             System.out.println("- Rabbit");
             System.out.println("- Hamster");
-            System.out.println("");
+            System.out.println();
 
             // User selects a pet
             do {
@@ -87,6 +94,7 @@ public class Program {
 
         while (running) {
             int need = rand.nextInt(3);
+            System.out.println();
             System.out.print(petName + " is ");
             switch (need) {
                 case 0: { // hungry
