@@ -6,11 +6,9 @@ public class Rabbit extends Animal {
         super();
         this.species = Species.RABBIT;
 
-        foods = new String[] { "lettuce", "carrot", "grass" };
-
-        nutritionStats.put(foods[0], 0.2f);
-        nutritionStats.put(foods[1], 0.5f);
-        nutritionStats.put(foods[2], 0.1f);
+        nutritionStats.put(foods[0] = "lettuce", 0.2f);
+        nutritionStats.put(foods[1] = "carrots", 0.6f);
+        nutritionStats.put(foods[2] = "grass", 0.1f);
     }
 
     public String toString() {

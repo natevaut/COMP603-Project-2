@@ -17,17 +17,18 @@ public class Animal {
         hydrationStats = new HashMap<>();
         loveStats = new HashMap<>();
 
-        foods = null; // done in subclasses
+        foods = new String[3];
+        // stats done in subclasses
         
-        liquids = new String[]{"water", "milk", "juice"};
-        hydrationStats.put(liquids[0], 0.7f);
-        hydrationStats.put(liquids[1], 0.1f);
-        hydrationStats.put(liquids[2], 0.0f);
+        liquids = new String[3];
+        hydrationStats.put(liquids[0] = "water", 0.7f);
+        hydrationStats.put(liquids[1] = "milk", 0.1f);
+        hydrationStats.put(liquids[2] = "juice", 0.0f);
 
-        actions = new String[]{"pat", "hug", "kiss"};
-        loveStats.put(actions[0], 0.4f);
-        loveStats.put(actions[1], 0.3f);
-        loveStats.put(actions[2], 0.1f);
+        actions = new String[3];
+        loveStats.put(actions[0] = "pat", 0.4f);
+        loveStats.put(actions[1] = "hug", 0.3f);
+        loveStats.put(actions[2] = "kiss", 0.1f);
 
     }
 

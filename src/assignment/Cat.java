@@ -7,11 +7,9 @@ public class Cat extends Animal {
         super();
         this.species = Species.CAT;
         
-        foods = new String[] { "biscuits", "meat", "tuna" };
-
-        nutritionStats.put(foods[0], 0.2f);
-        nutritionStats.put(foods[1], 0.5f);
-        nutritionStats.put(foods[2], 0.1f);
+        nutritionStats.put(foods[0] = "biscuits", 0.2f);
+        nutritionStats.put(foods[1] = "meat", 0.7f);
+        nutritionStats.put(foods[2] = "tuna", 0.4f);
     }
     
     public String toString() {
