@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-    /** @author Nate Evans 21144881 */
+/** @author Nate Evans 21144881 */
 public class Program {
 
     private static boolean running;
@@ -83,7 +83,7 @@ public class Program {
             int need = rand.nextInt(3);
             System.out.print(petName + " is ");
             switch (need) {
-                case 0: {
+                case 0: { // hungry
                     animal.makeHungry();
                     System.out.println(asPercent(1 - animal.getNutrition()) + " hungry!");
 
@@ -106,7 +106,7 @@ public class Program {
                     }
                     break;
                 }
-                case 1: {
+                case 1: { // thirsty
                     animal.makeThirsty();
                     System.out.println(asPercent(1 - animal.getHydration()) + " thirsty!");
 
@@ -129,7 +129,7 @@ public class Program {
                     }
                     break;
                 }
-                case 2: {
+                case 2: { // lonely
                     animal.makeLonely();
                     System.out.println(asPercent(1 - animal.getLove()) + " lonely :(");
 
@@ -158,7 +158,7 @@ public class Program {
             System.out.println("Do you want to continue with your pet?");
             input = scanner.next().toLowerCase().charAt(0);
             if (input != 'y') {
-                // TODO: save pet to a file!
+                FileIO.saveToFile(animal);
                 System.out.println("Exiting program");
                 running = false;
             }

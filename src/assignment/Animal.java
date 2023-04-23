@@ -73,6 +73,7 @@ public class Animal {
         return this.species;
     }
 
+    /** @author Alvina Angelin 22152692 */
     public String[] getActions() {
         return this.actions;
     }
