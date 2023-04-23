@@ -38,10 +38,10 @@ public class Program {
         } else {
         
             System.out.println("You have four animals to choose from:");
-            System.out.println("[D] Dog");
-            System.out.println("[C] Cat");
-            System.out.println("[R] Rabbit");
-            System.out.println("[H] Hamster");
+            System.out.println("- Dog");
+            System.out.println("- Cat");
+            System.out.println("- Rabbit");
+            System.out.println("- Hamster");
             System.out.println("");
 
             // User selects a pet

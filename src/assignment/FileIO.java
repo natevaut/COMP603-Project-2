@@ -43,7 +43,7 @@ public class FileIO {
 				String[] parts = line.split("=");
 				String key = parts[0], val = parts[1];
 				if (key.equals("species"))
-					species = val;
+					species = val.toLowerCase();
 				else if (key.equals("name"))
 					name = val;
 				else if (key.equals("nutrition"))
@@ -55,13 +55,13 @@ public class FileIO {
 			}
 
 			Animal animal = null;
-			if (species.equals("Dog"))
+			if (species.equals("dog"))
 				animal = new Dog();
-			else if (species.equals("Cat"))
+			else if (species.equals("cat"))
 				animal = new Cat();
-			else if (species.equals("Rabbit"))
+			else if (species.equals("rabbit"))
 				animal = new Rabbit();
-			else if (species.equals("Hamster"))
+			else if (species.equals("hamster"))
 				animal = new Hamster();
 			animal.loadAttributes(name, nutrition, hydration, love);
 
