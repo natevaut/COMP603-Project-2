@@ -17,7 +17,7 @@ public class Hamster extends Animal {
 
         loveStats.put(actions[0] = "pat", 0.4f);
         loveStats.put(actions[1] = "hug", 0.2f);
-        loveStats.put(actions[2] = "roller ball", 0.3f);
+        loveStats.put(actions[2] = "rollerball", 0.3f);
     }
 
     public String toString() {
