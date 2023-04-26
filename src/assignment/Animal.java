@@ -22,8 +22,8 @@ public class Animal {
         
         liquids = new String[3];
         hydrationStats.put(liquids[0] = "water", 0.7f);
-        hydrationStats.put(liquids[1] = "milk", 0.1f);
-        hydrationStats.put(liquids[2] = "juice", 0.0f);
+        hydrationStats.put(liquids[1] = "milk", 0.2f);
+        hydrationStats.put(liquids[2] = "juice", 0.1f);
 
         actions = new String[3];
         loveStats.put(actions[0] = "pat", 0.4f);
