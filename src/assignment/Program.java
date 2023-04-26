@@ -117,7 +117,7 @@ public class Program {
         while (running) {
             int need = rand.nextInt(3);
             System.out.println();
-            System.out.print(petName + " is ");
+            System.out.print(petName + " is now ");
             switch (need) {
                 case 0: { // hungry
                     animal.makeHungry();
