@@ -27,6 +27,7 @@ public class Program {
         System.out.println("");
 
         Animal animal = null;
+        boolean animalInvalid = false;
         
         // ask if user has pet already saved to disc
         char ans = '\0';
@@ -41,15 +42,25 @@ public class Program {
 
         // load one from disc
         if (ans == 'y') {
-        	
+
             System.out.println("Loading pet from disc...");
             animal = FileIO.loadFromFile();
-            String species = animal.getSpecies().toString().toLowerCase();
-            System.out.println("Loaded your pet " + species + ": " + animal.getName());
-            System.out.println();
 
-        } else {
-        
+            if (animal == null) {
+	            System.out.println("No animal saved!");
+	            System.out.println("Please adopt a new pet.");
+	            System.out.println();
+            	animalInvalid = true;
+            } else {
+	            String species = animal.getSpecies().toString().toLowerCase();
+	            System.out.println("Loaded your pet " + species + ": " + animal.getName());
+	            System.out.println();
+	        }
+
+        }
+
+        if (ans == 'n' || animalInvalid) {
+
             System.out.println("You have four animals to choose from:");
             System.out.println("- Dog");
             System.out.println("- Cat");

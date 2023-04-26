@@ -27,8 +27,8 @@ public class Animal {
 
         actions = new String[3];
         loveStats.put(actions[0] = "pat", 0.4f);
-        loveStats.put(actions[1] = "hug", 0.3f);
-        loveStats.put(actions[2] = "kiss", 0.1f);
+        loveStats.put(actions[1] = "hug", 0.2f);
+        loveStats.put(actions[2] = "scratch", 0.3f);
 
     }
 
@@ -148,7 +148,7 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public void makeHungry() {
         Random random = new Random();
-        this.nutrition -= random.nextInt(100) / 100;
+        this.nutrition -= random.nextInt(100) / 100.0;
 
         if (this.nutrition <= 0) {
             this.nutrition = 0;
@@ -158,7 +158,7 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public void makeThirsty() {
         Random random = new Random();
-        this.hydration -= random.nextInt(100) / 100;
+        this.hydration -= random.nextInt(100) / 100.0;
 
         if (this.hydration <= 0) {
             this.hydration = 0;
@@ -168,7 +168,7 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public void makeLonely() {
         Random random = new Random();
-        this.love -= random.nextInt(100) / 100;
+        this.love -= random.nextInt(100) / 100.0;
 
         if (this.love < 0) {
             this.love = 0;
