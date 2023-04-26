@@ -17,9 +17,9 @@ public class FileIO {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME));
 			pw.printf("species=%s\n", animal.getSpecies());
 			pw.printf("name=%s\n", animal.getName());
-			pw.printf("nutrition=%s\n", animal.getNutrition());
-			pw.printf("hydration=%s\n", animal.getHydration());
-			pw.printf("love=%s\n", animal.getLove());
+			pw.printf("nutrition=%f\n", animal.getNutrition());
+			pw.printf("hydration=%f\n", animal.getHydration());
+			pw.printf("love=%f\n", animal.getLove());
 			pw.close();
 			return true;
 		} catch (FileNotFoundException err) {
