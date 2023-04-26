@@ -119,20 +119,29 @@ public class Animal {
     public void eat(String food) {
         if (nutritionStats.containsKey(food)) {
             nutrition += nutritionStats.get(food);
+            if (nutrition > 1) {
+                nutrition = 1;
+            }
         }
     }
 
     /** @author Alvina Angelin 22152692 */
     public void drink(String liquid) {
         if (hydrationStats.containsKey(liquid)) {
-            hydration = hydrationStats.get(liquid);
+            hydration += hydrationStats.get(liquid);
+            if (hydration > 1) {
+                hydration = 1;
+            }
         }
     }
 
     /** @author Alvina Angelin 22152692 */
     public void receive(String actions) {
         if (loveStats.containsKey(actions)) {
-            love = loveStats.get(actions);
+            love += loveStats.get(actions);
+            if (love > 1) {
+                love = 1;
+            }
         }
     }
 
