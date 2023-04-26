@@ -9,16 +9,17 @@ public enum Species {
     }
     
     public static Animal newSpeciesFromString(String species) {
+    	species = species.toLowerCase();
         switch (species) {
-            case "Dog":
+            case "dog":
                 return new Dog();
-            case "Cat":
+            case "cat":
                 return new Cat();
-            case "Rabbit":
+            case "rabbit":
                 return new Rabbit();
-            case "Hamster":
+            case "hamster":
                 return new Hamster();
-            case "Frog":
+            case "frog":
                 return new Frog();
         }
         return null;
