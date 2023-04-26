@@ -15,6 +15,7 @@ public class Program {
 
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
+        while (!FileIO.createPetsFile());
 
         System.out.println("----------------");
         System.out.println("");
@@ -97,7 +98,7 @@ public class Program {
 
             // Name the animal
             System.out.print("Name your animal: ");
-            String petName = scanner.nextLine();
+            String petName = scanner.nextLine().toUpperCase();
             animal.setName(petName);
             System.out.println();
         
@@ -109,7 +110,7 @@ public class Program {
         System.out.println(animal.toString().toUpperCase());
         System.out.println();
         ASCII.printAnimal(animal);
-        System.out.println(petName.toUpperCase());
+        System.out.println(petName);
         System.out.println();
 
         // Keep the animal alive
