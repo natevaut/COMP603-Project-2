@@ -62,29 +62,20 @@ public class Program {
         if (ans == 'n' || animalInvalid) {
 
             System.out.println("You have four animals to choose from:");
-            System.out.println("- Dog");
-            System.out.println("- Cat");
-            System.out.println("- Rabbit");
-            System.out.println("- Hamster");
-            System.out.println("- Frog");
+            String[] speciesList = Species.getSpeciesList();
+            for (String species : speciesList) {
+            	System.out.println("- " + species);
+            }
             System.out.println();
 
             // User selects a pet
             do {
                 System.out.print("Please select a pet to look after: ");
                 String pet = scanner.nextLine().toLowerCase();
-                if (pet.equals("dog"))
-                    animal = new Dog();
-                else if (pet.equals("cat"))
-                    animal = new Cat();
-                else if (pet.equals("rabbit"))
-                    animal = new Rabbit();
-                else if (pet.equals("hamster"))
-                    animal = new Hamster();
-                else if (pet.equals("frog"))
-                    animal = new Frog();
-                else 
+                animal = Species.newSpeciesFromString(pet);
+                if (animal == null) { 
                     System.out.println("That is not a valid pet option.");
+                }
             } while (animal == null);
 
             // Name the animal

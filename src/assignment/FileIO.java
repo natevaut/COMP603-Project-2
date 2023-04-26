@@ -11,15 +11,17 @@ import java.io.PrintWriter;
 public class FileIO {
 
 	public static final String FILENAME = "pet.txt";
+	
+	private static final char DELIM = '=';
 
 	public static boolean saveToFile(Animal animal) {
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME));
-			pw.printf("species=%s\n", animal.getSpecies());
-			pw.printf("name=%s\n", animal.getName());
-			pw.printf("nutrition=%f\n", animal.getNutrition());
-			pw.printf("hydration=%f\n", animal.getHydration());
-			pw.printf("love=%f\n", animal.getLove());
+			pw.printf("species%c%s\n", DELIM, animal.getSpecies());
+			pw.printf("name%c%s\n", DELIM, animal.getName());
+			pw.printf("nutrition%c%f\n", DELIM, animal.getNutrition());
+			pw.printf("hydration%c%f\n", DELIM, animal.getHydration());
+			pw.printf("love%c%f\n", DELIM, animal.getLove());
 			pw.close();
 			return true;
 		} catch (FileNotFoundException err) {
@@ -36,7 +38,7 @@ public class FileIO {
 
 			// load the file contents
 			for (String line = ""; (line = br.readLine()) != null;) {
-				String[] parts = line.split("=");
+				String[] parts = line.split(DELIM + "");
 				String key = parts[0], val = parts[1];
 				if (key.equals("species"))
 					species = val.toLowerCase();
