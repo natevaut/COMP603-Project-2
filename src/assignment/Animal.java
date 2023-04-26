@@ -136,9 +136,9 @@ public class Animal {
     }
 
     /** @author Alvina Angelin 22152692 */
-    public void receive(String actions) {
-        if (loveStats.containsKey(actions)) {
-            love += loveStats.get(actions);
+    public void receive(String action) {
+        if (loveStats.containsKey(action)) {
+            love += loveStats.get(action);
             if (love > 1) {
                 love = 1;
             }

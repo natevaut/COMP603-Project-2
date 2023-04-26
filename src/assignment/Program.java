@@ -15,6 +15,7 @@ public class Program {
 
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
+        FileIO.cleanDuplicates();
         while (!FileIO.createPetsFile());
 
         System.out.println("----------------");

@@ -92,5 +92,19 @@ public class FileIO {
 	        }
 	    }
 	}
+	
+	public static void cleanDuplicates() {
+		HashMap<String, Animal> animals = loadFromFile();
+		File file = new File(FILENAME);
+		
+		if (file.exists())
+			file.delete();
+		while (!createPetsFile());
+		
+		for (Animal animal : animals.values()) {
+			saveToFile(animal);
+		}
+		
+	}
 
 }
