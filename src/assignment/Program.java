@@ -139,6 +139,7 @@ public class Program {
                         }
                         animal.eat(food);
                         System.out.println("Replenished " + petName + "'s hunger to " + asPercent(animal.getNutrition()));
+                        System.out.println(petName + " is now only " + asPercent(1 - animal.getNutrition()) + " hungry");
                     }
                     break;
                 }
@@ -162,6 +163,7 @@ public class Program {
                         }
                         animal.drink(drink);
                         System.out.println("Replenished " + petName + "'s thirst to " + asPercent(animal.getHydration()));
+                        System.out.println(petName + " is now only " + asPercent(1 - animal.getHydration()) + " thirsty");
                     }
                     break;
                 }
@@ -185,6 +187,7 @@ public class Program {
                         }
                         animal.receive(action);
                         System.out.println("Replenished " + petName + "'s love meter to " + asPercent(animal.getLove()));
+                        System.out.println(petName + " is now only " + asPercent(1 - animal.getLove()) + " lonely");
                     }
                     break;
                 }
@@ -207,7 +210,7 @@ public class Program {
     }
 
     private static String asPercent(float amount) {
-        return String.format("%.1f%%", amount * 100);
+        return String.format("%.0f%%", amount * 100);
     }
 
 }
