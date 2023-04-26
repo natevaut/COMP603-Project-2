@@ -49,6 +49,12 @@ public class Program {
             HashMap<String, Animal> pets = FileIO.loadFromFile();
 
             System.out.println("Loading pets from disc...");
+            System.out.println();
+            System.out.println("List of adopted pets:");
+            for (Object name : pets.keySet()) {
+                System.out.printf("- %s\n", name);
+            }
+            System.out.println();
 
             do {
                 System.out.println("What is the name of your pet?");
