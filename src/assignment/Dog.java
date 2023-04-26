@@ -14,7 +14,7 @@ public class Dog extends Animal {
         hydrationStats.put(liquids[0] = "water", 0.7f);
         hydrationStats.put(liquids[1] = "milk", 0.4f);
         hydrationStats.put(liquids[2] = "juice", 0.1f);
-        
+
         loveStats.put(actions[0] = "walk", 0.4f);
         loveStats.put(actions[1] = "fetch", 0.2f);
         loveStats.put(actions[2] = "pat", 0.3f);

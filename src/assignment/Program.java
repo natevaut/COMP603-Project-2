@@ -31,7 +31,7 @@ public class Program {
 
         Animal animal = null;
         boolean animalInvalid = false;
-        
+
         // ask if user has pet already saved to disc
         char ans = '\0';
         while (true) {
@@ -49,7 +49,7 @@ public class Program {
             HashMap<String, Animal> pets = FileIO.loadFromFile();
 
             System.out.println("Loading pets from disc...");
-            
+
             do {
                 System.out.println("What is the name of your pet?");
                 String petName = scanner.nextLine().toUpperCase();
@@ -92,7 +92,7 @@ public class Program {
                 System.out.print("Please select a pet to look after: ");
                 String pet = scanner.nextLine().toLowerCase();
                 animal = Species.newSpeciesFromString(pet);
-                if (animal == null) { 
+                if (animal == null) {
                     System.out.println("That is not a valid pet option.");
                 }
             } while (animal == null);
@@ -102,7 +102,7 @@ public class Program {
             String petName = scanner.nextLine().toUpperCase();
             animal.setName(petName);
             System.out.println();
-        
+
         }
 
         // Print pet
@@ -206,7 +206,7 @@ public class Program {
                 running = false;
             }
         }
-        
+
         scanner.close();
 
     }

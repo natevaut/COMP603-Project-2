@@ -39,7 +39,7 @@ public class ASCII {
         System.out.println("  _|    /_  \\ \\_\\_");
         System.out.println(" {_\\______\\-'\\__\\_\\");
     }
-    
+
     private static void printFrog() {
         System.out.println("              _    ");
         System.out.println("  __   ___.--'_`. ");
