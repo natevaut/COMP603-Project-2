@@ -1,12 +1,12 @@
 package assignment;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -16,6 +16,8 @@ public class FileIO {
 	public static final String FILENAME = "pets.txt";
 
 	public static boolean saveToFile(Animal animal) {
+		while (!createPetsFile());
+
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME, true));
 			pw.printf("%s", animal.getName().toUpperCase());
@@ -36,7 +38,8 @@ public class FileIO {
 	}
 
 	public static HashMap<String, Animal> loadFromFile() {
-		
+		while (!createPetsFile());
+
 		HashMap<String, Animal> pets = new HashMap<>();
 		
 		try {
@@ -69,10 +72,25 @@ public class FileIO {
 			br.close();
 
 		} catch (FileNotFoundException e) {
+			while (!createPetsFile());
 		} catch (IOException e) {
 		}
 
 		return pets;
+	}
+	
+	public static boolean createPetsFile() {
+		File file = new File(FILENAME);
+	    if (file.exists()) {
+	    	return true;
+	    } else {
+	        try {
+	            file.createNewFile();
+	            return true;
+	        } catch (IOException err) {
+	            return false;
+	        }
+	    }
 	}
 
 }
