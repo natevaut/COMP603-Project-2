@@ -55,6 +55,7 @@ public class Program {
             System.out.println("- Cat");
             System.out.println("- Rabbit");
             System.out.println("- Hamster");
+            System.out.println("- Frog");
             System.out.println();
 
             // User selects a pet
@@ -69,6 +70,8 @@ public class Program {
                     animal = new Rabbit();
                 else if (pet.equals("hamster"))
                     animal = new Hamster();
+                else if (pet.equals("frog"))
+                    animal = new Frog();
                 else 
                     System.out.println("That is not a valid pet option.");
             } while (animal == null);

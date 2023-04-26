@@ -39,6 +39,17 @@ public class ASCII {
         System.out.println("  _|    /_  \\ \\_\\_");
         System.out.println(" {_\\______\\-'\\__\\_\\");
     }
+    
+    private static void printFrog() {
+        System.out.println("              _    ");
+        System.out.println("  __   ___.--'_`. ");
+        System.out.println(" ( _`.'. -   'o` ) ");
+        System.out.println(" _\\.'_'      _.-'");
+        System.out.println("( \\`. )    //\\`   ");
+        System.out.println(" \\_`-'`---'\\\\__,  ");
+        System.out.println("  \\`        `-\\ ");
+        System.out.println("   `               ");
+    }
 
     public static void printAnimal(Animal animal) {
         Species species = animal.getSpecies();
@@ -54,6 +65,9 @@ public class ASCII {
                 break;
             case RABBIT:
                 printRabbit();
+                break;
+            case FROG:
+                printFrog();
                 break;
         }
     }
