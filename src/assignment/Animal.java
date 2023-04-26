@@ -27,8 +27,8 @@ public class Animal {
 
         actions = new String[3];
         loveStats.put(actions[0] = "pat", 0.4f);
-        loveStats.put(actions[1] = "hug", 0.3f);
-        loveStats.put(actions[2] = "kiss", 0.1f);
+        loveStats.put(actions[1] = "hug", 0.2f);
+        loveStats.put(actions[2] = "scratch", 0.3f);
 
     }
 
