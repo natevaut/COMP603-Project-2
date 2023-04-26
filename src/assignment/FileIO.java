@@ -60,6 +60,7 @@ public class FileIO {
 				animal = new Rabbit();
 			else if (species.equals("hamster"))
 				animal = new Hamster();
+			
 			animal.loadAttributes(name, nutrition, hydration, love);
 
 			br.close();
