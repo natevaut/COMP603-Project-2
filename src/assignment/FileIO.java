@@ -12,19 +12,14 @@ public class FileIO {
 
 	public static final String FILENAME = "pet.txt";
 
-	private static final String FILE_FORMAT = """
-			species=%s
-			name=%s
-			nutrition=%f
-			hydration=%f
-			love=%f
-			""";
-
 	public static boolean saveToFile(Animal animal) {
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME));
-			pw.printf(FILE_FORMAT, animal.getSpecies(), animal.getName(), animal.getNutrition(), animal.getHydration(),
-					animal.getLove());
+			pw.printf("species=%s\n", animal.getSpecies());
+			pw.printf("name=%s\n", animal.getName());
+			pw.printf("nutrition=%s\n", animal.getNutrition());
+			pw.printf("hydration=%s\n", animal.getHydration());
+			pw.printf("love=%s\n", animal.getLove());
 			pw.close();
 			return true;
 		} catch (FileNotFoundException err) {
