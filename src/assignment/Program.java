@@ -1,5 +1,6 @@
 package assignment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
@@ -43,19 +44,35 @@ public class Program {
         // load one from disc
         if (ans == 'y') {
 
-            System.out.println("Loading pet from disc...");
-            animal = FileIO.loadFromFile();
+            HashMap<String, Animal> pets = FileIO.loadFromFile();
+
+            System.out.println("Loading pets from disc...");
+            
+            do {
+                System.out.println("What is the name of your pet?");
+                String petName = scanner.nextLine().toUpperCase();
+                if (pets.containsKey(petName)) {
+                    animal = pets.get(petName);
+                    System.out.println("Loaded pet " + petName);
+                } else {
+                    System.out.println("Pet " + petName + " does not exist.");
+                    System.out.println("Do you want to try again? (y/n)");
+                    char opt = scanner.nextLine().charAt(0);
+                    if (opt == 'n')
+                        break;
+                }
+            } while (animal == null);
 
             if (animal == null) {
-	            System.out.println("No animal saved!");
-	            System.out.println("Please adopt a new pet.");
-	            System.out.println();
-            	animalInvalid = true;
+                System.out.println("No animal saved!");
+                System.out.println("Please adopt a new pet.");
+                System.out.println();
+                animalInvalid = true;
             } else {
-	            String species = animal.getSpecies().toString().toLowerCase();
-	            System.out.println("Loaded your pet " + species + ": " + animal.getName());
-	            System.out.println();
-	        }
+                String species = animal.getSpecies().toString().toLowerCase();
+                System.out.println("Loaded your pet " + species + ": " + animal.getName());
+                System.out.println();
+            }
 
         }
 
@@ -64,7 +81,7 @@ public class Program {
             System.out.println("You have four animals to choose from:");
             String[] speciesList = Species.getSpeciesList();
             for (String species : speciesList) {
-            	System.out.println("- " + species);
+                System.out.println("- " + species);
             }
             System.out.println();
 

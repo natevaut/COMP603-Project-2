@@ -1,4 +1,4 @@
-pet.txt
+pet*.txt
 
 # Compiled class file
 *.class
