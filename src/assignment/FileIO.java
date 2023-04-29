@@ -22,7 +22,7 @@ public class FileIO {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME, true));
 			pw.printf("%s", animal.getName().toUpperCase());
 			pw.print(":");
-			pw.printf("spec=%s", animal.getSpecies());
+			pw.printf("type=%s", animal.getSpecies());
 			pw.print(",");
 			pw.printf("nutr=%f", animal.getNutrition());
 			pw.print(",");
@@ -52,7 +52,7 @@ public class FileIO {
 
 				String unused;
 				String name = scan.next();
-				unused = scan.next(); // ignore `spec=
+				unused = scan.next(); // ignore `type=
 				String species = scan.next();
 				unused = scan.next(); // ignore `nutr=
 				float nutrition = scan.nextFloat();

@@ -19,7 +19,7 @@ public class Animal {
 
         foods = new String[3];
         // stats done in subclasses
-        
+
         liquids = new String[3];
         // stats done in subclasses
 

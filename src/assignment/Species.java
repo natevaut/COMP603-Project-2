@@ -7,9 +7,9 @@ public enum Species {
     public static String[] getSpeciesList() {
         return new String[] { "Dog", "Cat", "Rabbit", "Hamster", "Frog" };
     }
-    
+
     public static Animal newSpeciesFromString(String species) {
-    	species = species.toLowerCase();
+        species = species.toLowerCase();
         switch (species) {
             case "dog":
                 return new Dog();

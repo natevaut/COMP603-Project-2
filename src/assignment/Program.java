@@ -31,7 +31,7 @@ public class Program {
 
         Animal animal = null;
         boolean animalInvalid = false;
-        
+
         // ask if user has pet already saved to disc
         char ans = '\0';
         while (true) {
@@ -49,7 +49,13 @@ public class Program {
             HashMap<String, Animal> pets = FileIO.loadFromFile();
 
             System.out.println("Loading pets from disc...");
-            
+            System.out.println();
+            System.out.println("List of adopted pets:");
+            for (Object name : pets.keySet()) {
+                System.out.printf("- %s\n", name);
+            }
+            System.out.println();
+
             do {
                 System.out.println("What is the name of your pet?");
                 String petName = scanner.nextLine().toUpperCase();
@@ -92,7 +98,7 @@ public class Program {
                 System.out.print("Please select a pet to look after: ");
                 String pet = scanner.nextLine().toLowerCase();
                 animal = Species.newSpeciesFromString(pet);
-                if (animal == null) { 
+                if (animal == null) {
                     System.out.println("That is not a valid pet option.");
                 }
             } while (animal == null);
@@ -102,7 +108,7 @@ public class Program {
             String petName = scanner.nextLine().toUpperCase();
             animal.setName(petName);
             System.out.println();
-        
+
         }
 
         // Print pet
@@ -112,6 +118,13 @@ public class Program {
         System.out.println();
         ASCII.printAnimal(animal);
         System.out.println(petName);
+        System.out.println();
+        
+        // Print pet stats
+        System.out.println(petName + "'s stats:");
+        System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()), asPercent(1 - animal.getNutrition()));
+        System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()), asPercent(1 - animal.getHydration()));
+        System.out.printf("Love: %s (%s lonely)\n", asPercent(animal.getLove()), asPercent(1 - animal.getLove()));
         System.out.println();
 
         // Keep the animal alive
@@ -206,7 +219,7 @@ public class Program {
                 running = false;
             }
         }
-        
+
         scanner.close();
 
     }
