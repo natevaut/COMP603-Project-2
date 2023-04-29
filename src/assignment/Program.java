@@ -121,10 +121,8 @@ public class Program {
         System.out.println();
         
         // Print pet stats
-        System.out.println(petName + "'s stats:");
-        System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()), asPercent(1 - animal.getNutrition()));
-        System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()), asPercent(1 - animal.getHydration()));
-        System.out.printf("Love: %s (%s lonely)\n", asPercent(animal.getLove()), asPercent(1 - animal.getLove()));
+        System.out.println(animal.getName() + "'s stats:");
+        printStats(animal);
         System.out.println();
 
         // Keep the animal alive
@@ -213,6 +211,10 @@ public class Program {
             input = scanner.next().toLowerCase().charAt(0);
             // save pet to disc and exit
             if (input != 'y') {
+            	System.out.println();
+                System.out.println(animal.getName() + "'s final stats:");
+            	printStats(animal);
+            	System.out.println();
                 System.out.println("Saving pet to file...");
                 FileIO.saveToFile(animal);
                 System.out.println("Exiting program");
@@ -222,6 +224,13 @@ public class Program {
 
         scanner.close();
 
+    }
+    
+    private static void printStats(Animal animal) {
+        System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()), asPercent(1 - animal.getNutrition()));
+        System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()), asPercent(1 - animal.getHydration()));
+        System.out.printf("Love: %s (%s lonely)\n", asPercent(animal.getLove()), asPercent(1 - animal.getLove()));
+        System.out.println();
     }
 
     private static String asPercent(float amount) {
