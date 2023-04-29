@@ -119,6 +119,13 @@ public class Program {
         ASCII.printAnimal(animal);
         System.out.println(petName);
         System.out.println();
+        
+        // Print pet stats
+        System.out.println(petName + "'s stats:");
+        System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()), asPercent(1 - animal.getNutrition()));
+        System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()), asPercent(1 - animal.getHydration()));
+        System.out.printf("Love: %s (%s lonely)\n", asPercent(animal.getLove()), asPercent(1 - animal.getLove()));
+        System.out.println();
 
         // Keep the animal alive
         // main loop
