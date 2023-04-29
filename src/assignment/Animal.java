@@ -11,7 +11,7 @@ public class Animal {
     protected float nutrition, hydration, love;
     protected HashMap<String, Float> nutritionStats, hydrationStats, loveStats;
 
-    /** @author Nate Evans 21144881 */
+    /**@author Nate Evans 21144881 */
     public Animal() {
         nutritionStats = new HashMap<>();
         hydrationStats = new HashMap<>();
@@ -28,7 +28,10 @@ public class Animal {
 
     }
 
-    /** @author Nate Evans 21144881 */
+    /**
+     * Loads attributes and saves them into the current pet's stats
+     * @author Nate Evans 21144881
+     */
     public void loadAttributes(String name, float n, float h, float l) {
         this.name = name;
         nutrition = n;

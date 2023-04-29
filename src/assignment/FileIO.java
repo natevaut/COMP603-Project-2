@@ -15,6 +15,9 @@ public class FileIO {
 
 	public static final String FILENAME = "pets.txt";
 
+	/**
+	 * Saves a new animal to the pets file
+	 */
 	public static boolean saveToFile(Animal animal) {
 		while (!createPetsFile());
 
@@ -37,11 +40,14 @@ public class FileIO {
 		}
 	}
 
+	/**
+	 * Loads all animals from the pets file and returns them as a hash map of names to animal data
+	 */
 	public static HashMap<String, Animal> loadFromFile() {
 		while (!createPetsFile());
 
 		HashMap<String, Animal> pets = new HashMap<>();
-		
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(FILENAME));
 
@@ -63,7 +69,7 @@ public class FileIO {
 
 				Animal pet = Species.newSpeciesFromString(species);
 				pet.loadAttributes(name, nutrition, hydration, love);
-				
+
 				if (pets.containsKey(name))
 				    pets.remove(name);
 				pets.put(name, pet);
@@ -78,7 +84,10 @@ public class FileIO {
 
 		return pets;
 	}
-	
+
+	/**
+	 * Sets up the pets file
+	 */
 	public static boolean createPetsFile() {
 		File file = new File(FILENAME);
 	    if (file.exists()) {
@@ -92,19 +101,22 @@ public class FileIO {
 	        }
 	    }
 	}
-	
+
+	/**
+	 * Removes duplicate animals from the pets file
+	 */
 	public static void cleanDuplicates() {
 		HashMap<String, Animal> animals = loadFromFile();
 		File file = new File(FILENAME);
-		
+
 		if (file.exists())
 			file.delete();
 		while (!createPetsFile());
-		
+
 		for (Animal animal : animals.values()) {
 			saveToFile(animal);
 		}
-		
+
 	}
 
 }

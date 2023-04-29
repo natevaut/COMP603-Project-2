@@ -51,6 +51,9 @@ public class ASCII {
         System.out.println("   `               ");
     }
 
+    /**
+     * Prints ASCII art of an animal
+     */
     public static void printAnimal(Animal animal) {
         Species species = animal.getSpecies();
         switch (species) {

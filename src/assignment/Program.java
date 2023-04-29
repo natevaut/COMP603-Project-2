@@ -226,6 +226,9 @@ public class Program {
 
     }
     
+    /**
+     * Prints an animal's stats to the console
+     */
     private static void printStats(Animal animal) {
         System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()), asPercent(1 - animal.getNutrition()));
         System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()), asPercent(1 - animal.getHydration()));
@@ -233,6 +236,9 @@ public class Program {
         System.out.println();
     }
 
+    /**
+     * Converts a float amount into a string percentage representation (rounded to 0 d.p.)
+     */
     private static String asPercent(float amount) {
         return String.format("%.0f%%", amount * 100);
     }

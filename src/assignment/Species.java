@@ -8,6 +8,9 @@ public enum Species {
         return new String[] { "Dog", "Cat", "Rabbit", "Hamster", "Frog" };
     }
 
+    /**
+     * Converts a species string into a new instance of an animal subclass
+     */
     public static Animal newSpeciesFromString(String species) {
         species = species.toLowerCase();
         switch (species) {
