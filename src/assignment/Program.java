@@ -35,7 +35,7 @@ public class Program {
         // ask if user has pet already saved to disc
         char ans = '\0';
         while (true) {
-            System.out.println("Do you already have a pet?");
+            System.out.println("Do you already have a pet? (y/n)");
             ans = scanner.nextLine().charAt(0);
             if (ans == 'y' || ans == 'n')
                 break;
