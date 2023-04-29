@@ -144,7 +144,12 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public void makeHungry() {
         Random random = new Random();
-        this.nutrition -= random.nextInt(50) / 100.0;
+        makeHungry(random.nextInt(50) / 100.0f);
+    }
+    
+    /** @author Alvina Angelin 22152692 */
+    private void makeHungry(float amount) {
+        this.nutrition -= amount;
 
         if (this.nutrition <= 0) {
             this.nutrition = 0;
@@ -154,7 +159,12 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public void makeThirsty() {
         Random random = new Random();
-        this.hydration -= random.nextInt(50) / 100.0;
+        makeThirsty(random.nextInt(50) / 100.0f);
+    }
+    
+    /** @author Alvina Angelin 22152692 */
+    private void makeThirsty(float amount) {
+        this.hydration -= amount;
 
         if (this.hydration <= 0) {
             this.hydration = 0;
@@ -164,7 +174,12 @@ public class Animal {
     /** @author Alvina Angelin 22152692 */
     public void makeLonely() {
         Random random = new Random();
-        this.love -= random.nextInt(50) / 100.0;
+        makeLonely(random.nextInt(50) / 100.0f);
+    }
+    
+    /** @author Alvina Angelin 22152692 */
+    private void makeLonely(float amount) {
+        this.love -= amount;
 
         if (this.love < 0) {
             this.love = 0;
