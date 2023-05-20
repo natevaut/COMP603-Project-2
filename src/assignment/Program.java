@@ -206,19 +206,26 @@ public class Program {
                 }
             }
 
-            char input;
-            System.out.println("Do you want to continue with your pet?");
-            input = scanner.next().toLowerCase().charAt(0);
-            // save pet to disc and exit
-            if (input != 'y') {
-            	System.out.println();
-                System.out.println(animal.getName() + "'s final stats:");
-            	printStats(animal);
-            	System.out.println();
-                System.out.println("Saving pet to file...");
-                FileIO.saveToFile(animal);
-                System.out.println("Exiting program");
-                running = false;
+            char input = 0;
+            while (input == 0) {
+                System.out.println("Do you want to continue with your pet? (y/n)");
+                input = scanner.next().toLowerCase().charAt(0);
+                // save pet to disc and exit
+                if (input == 'y');
+                else if (input == 'n') {
+                	System.out.println();
+                    System.out.println(animal.getName() + "'s final stats:");
+                	printStats(animal);
+                	System.out.println();
+                    System.out.println("Saving pet to file...");
+                    FileIO.saveToFile(animal);
+                    System.out.println("Exiting program");
+                    running = false;
+                }
+                else {
+                    input = 0;
+                    System.out.println("Invalid input!");
+                }
             }
         }
 
