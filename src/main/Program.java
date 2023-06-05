@@ -1,9 +1,12 @@
-package assignment;
+package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+
+import animals.Animal;
+import animals.Species;
 
 /** @author Nate Evans 21144881 */
 public class Program {

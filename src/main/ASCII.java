@@ -1,4 +1,7 @@
-package assignment;
+package main;
+
+import animals.Animal;
+import animals.Species;
 
 /** @author Alvina Angelin 22152692 */
 public class ASCII {

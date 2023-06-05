@@ -1,4 +1,4 @@
-package assignment;
+package animals;
 
 /** @author Nate Evans 21144881 */
 public enum Species {
