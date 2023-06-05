@@ -1,4 +1,4 @@
-package assignment;
+package animals;
 
 import java.util.HashMap;
 import java.util.Random;

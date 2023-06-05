@@ -1,4 +1,4 @@
-package assignment;
+package animals;
 
 /** @author Alvina Angelin 22152692 */
 public class Rabbit extends Animal {

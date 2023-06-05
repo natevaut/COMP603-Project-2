@@ -1,18 +1,18 @@
-package assignment;
+package animals;
 
 /** @author Alvina Angelin 22152692 */
-public class Frog extends Animal {
+public class Cat extends Animal {
 
-    public Frog() {
+    public Cat() {
         super();
-        this.species = Species.FROG;
+        this.species = Species.CAT;
 
-        nutritionStats.put(foods[0] = "fly", 0.4f);
-        nutritionStats.put(foods[1] = "snail", 0.6f);
-        nutritionStats.put(foods[2] = "worm", 0.2f);
+        nutritionStats.put(foods[0] = "biscuits", 0.2f);
+        nutritionStats.put(foods[1] = "meat", 0.7f);
+        nutritionStats.put(foods[2] = "tuna", 0.4f);
 
         hydrationStats.put(liquids[0] = "water", 0.7f);
-        hydrationStats.put(liquids[1] = "milk", 0.2f);
+        hydrationStats.put(liquids[1] = "milk", 0.4f);
         hydrationStats.put(liquids[2] = "juice", 0.1f);
 
         loveStats.put(actions[0] = "pat", 0.4f);
@@ -21,6 +21,6 @@ public class Frog extends Animal {
     }
 
     public String toString() {
-        return "Frog";
+        return "Cat";
     }
 }
