@@ -25,6 +25,7 @@ public class Program {
         FileIO.touchPetsFile();
         DatabaseInit db = new DatabaseInit();
         PetsDatabase pdb = new PetsDatabase(db.conn);
+        pdb.loadPetsFromFile();
 
         System.out.println("----------------");
         System.out.println("");
@@ -53,7 +54,6 @@ public class Program {
 
         // load pet from database
         if (ans == 'y') {
-            pdb.loadPetsFromFile();
 
             HashMap<String, Animal> pets = pdb.getAllPets();
 
@@ -160,6 +160,7 @@ public class Program {
                         System.out.println("That is not a valid food!\n");
                     }
                     animal.eat(food);
+                    System.out.println();
                     System.out.println("Replenished " + petName + "'s hunger to " + asPercent(animal.getNutrition()));
                     System.out.println(petName + " is now only " + asPercent(1 - animal.getNutrition()) + " hungry");
                 }
@@ -184,6 +185,7 @@ public class Program {
                         System.out.println("That is not a valid drink!\n");
                     }
                     animal.drink(drink);
+                    System.out.println();
                     System.out.println("Replenished " + petName + "'s thirst to " + asPercent(animal.getHydration()));
                     System.out.println(petName + " is now only " + asPercent(1 - animal.getHydration()) + " thirsty");
                 }
@@ -208,6 +210,7 @@ public class Program {
                         System.out.println("That is not a valid action!\n");
                     }
                     animal.receive(action);
+                    System.out.println();
                     System.out.println("Replenished " + petName + "'s love meter to " + asPercent(animal.getLove()));
                     System.out.println(petName + " is now only " + asPercent(1 - animal.getLove()) + " lonely");
                 }

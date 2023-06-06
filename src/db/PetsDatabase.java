@@ -30,8 +30,7 @@ public class PetsDatabase {
     }
 
     /**
-     * Creates the 'pets' table in the database. Deletes it if already present
-     * before.
+     * Creates the 'pets' table in the database. Deletes it if already present.
      */
     public void setupPetsTable() {
         try {
@@ -101,7 +100,6 @@ public class PetsDatabase {
                 float hydr = resultSet.getFloat(Column.HYDRATION.name());
                 float love = resultSet.getFloat(Column.LOVE.name());
 
-               
                 Animal pet = Animal.createPet(type, name, nutr, hydr, love);
                 pets.put(name, pet);
             }
