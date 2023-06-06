@@ -1,4 +1,5 @@
 pet*.txt
+DB-*
 
 # Compiled class file
 *.class
@@ -6,20 +7,11 @@ pet*.txt
 # Log file
 *.log
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs
 hs_err_pid*
 replay_pid*
 
-# NetBeans specific #
+# NetBeans
 nbproject/private/
 build/
 nbbuild/

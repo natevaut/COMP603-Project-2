@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import animals.Animal;
 import animals.Species;
+import fileio.FileIO;
 
 /** @author Nate Evans 21144881 */
 public class Program {
