@@ -18,7 +18,7 @@ public class Program {
 
     public static void main(String[] args) {
         running = true;
-        
+
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
 
@@ -54,7 +54,7 @@ public class Program {
         // load pet from database
         if (ans == 'y') {
             pdb.loadPetsFromFile();
-            
+
             HashMap<String, Animal> pets = pdb.getAllPets();
 
             System.out.println("Loading pets from disc...");
@@ -252,7 +252,6 @@ public class Program {
         System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()),
                 asPercent(1 - animal.getHydration()));
         System.out.printf("Love: %s (%s lonely)\n", asPercent(animal.getLove()), asPercent(1 - animal.getLove()));
-        System.out.println();
     }
 
     /**

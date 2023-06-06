@@ -13,6 +13,10 @@ import fileio.FileIO;
 /** @author Nate Evans 21144881 */
 public class PetsDatabase {
 
+    private static enum Column {
+        PETNAME, TYPE, NUTRITION, HYDRATION, LOVE;
+    }
+
     private Connection conn;
 
     /**
@@ -26,8 +30,8 @@ public class PetsDatabase {
     }
 
     /**
-     * Creates the 'pets' table in the database.
-     * Deletes it if already present before.
+     * Creates the 'pets' table in the database. Deletes it if already present
+     * before.
      */
     public void setupPetsTable() {
         try {
@@ -37,8 +41,10 @@ public class PetsDatabase {
             } catch (SQLSyntaxErrorException err) {
                 // don't care if table doesn't exist; good
             }
-            statement.executeUpdate("CREATE TABLE pets (petname varchar(30), type varchar(10),"
-                    + "nutrition float, hydration float, love float)");
+            String sql = "CREATE TABLE pets" + String.format(
+                    "(%s varchar(30), %s varchar(10)," + "%s float, %s float, %s float)", Column.PETNAME.name(),
+                    Column.TYPE.name(), Column.NUTRITION.name(), Column.HYDRATION.name(), Column.LOVE.name());
+            statement.executeUpdate(sql);
         } catch (SQLException err) {
             System.err.println(err);
             err.printStackTrace();
@@ -48,6 +54,7 @@ public class PetsDatabase {
 
     /**
      * Saves a pet to the database.
+     * 
      * @param animal The pet to save.
      */
     public void savePet(Animal animal) {
@@ -88,13 +95,14 @@ public class PetsDatabase {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String name = resultSet.getString("petName");
-                String type = resultSet.getString("type");
-                float nutr = resultSet.getFloat("nutrition");
-                float hydr = resultSet.getFloat("hydration");
-                float love = resultSet.getFloat("love");
+                String type = resultSet.getString(Column.TYPE.name());
+                String name = resultSet.getString(Column.PETNAME.name());
+                float nutr = resultSet.getFloat(Column.NUTRITION.name());
+                float hydr = resultSet.getFloat(Column.HYDRATION.name());
+                float love = resultSet.getFloat(Column.LOVE.name());
 
-                Animal pet = Animal.createPet(name, type, nutr, hydr, love);
+               
+                Animal pet = Animal.createPet(type, name, nutr, hydr, love);
                 pets.put(name, pet);
             }
         } catch (SQLException err) {
