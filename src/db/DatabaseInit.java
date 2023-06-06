@@ -1,14 +1,9 @@
 package db;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import java.sql.Statement;
-import java.util.HashMap;
-
-import animals.Animal;
-import fileio.FileIO;
 
 public class DatabaseInit {
 
@@ -17,52 +12,37 @@ public class DatabaseInit {
     static final String username = "test1";
     static final String password = "test1";
 
-    private static Connection conn;
+    public Connection conn;
 
     public static void main(String[] args) {
         DatabaseInit db = new DatabaseInit();
-        db.setupDB();
-        db.setupPetsTable();
-        db.loadPetsFromFile();
+        PetsDatabase pdb = new PetsDatabase(db.conn);
+        pdb.setupPetsTable();
+        pdb.loadPetsFromFile();
     }
 
-    public void setupDB() {
+    public DatabaseInit() {
+        startServer();
+
         try {
             conn = DriverManager.getConnection(url, username, password);
             System.out.println("Connected to database.");
         } catch (SQLException err) {
             System.err.println(err);
-            System.err.println("Try running startdbserver.bat first.");
         }
     }
 
-    public void setupPetsTable() {
+    public void startServer() {
         try {
-            Statement statement = conn.createStatement();
-            statement.executeUpdate("DROP TABLE pets");
-            statement.executeUpdate("CREATE TABLE pets (petname varchar(30), type varchar(10),"
-                    + "nutrition float, hydration float, love float)");
-        } catch (SQLException err) {
-            System.err.println(err);
-        }
+            ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "lib/derbyrun.jar", "server", "start");
+            processBuilder.redirectErrorStream(true);
 
-    }
+            Process process = processBuilder.start();
+            process.waitFor();
 
-    public void loadPetsFromFile() {
-        HashMap<String, Animal> pets = FileIO.loadFromFile();
-        try {
-            Statement statement = conn.createStatement();
-            for (String name : pets.keySet()) {
-                Animal animal = pets.get(name);
-                String type = animal.getSpecies().name();
-                float nutr = animal.getNutrition();
-                float hydr = animal.getHydration();
-                float love = animal.getLove();
-                statement.executeUpdate(String.format("INSERT INTO pets VALUES ('%s', '%s', %f, %f, %f)", name, type,
-                        nutr, hydr, love));
-            }
-            conn.close();
-        } catch (SQLException err) {
+            System.out.println("Derby server started successfully.");
+        } catch (IOException | InterruptedException err) {
+            System.err.println("Failed to start Derby server.");
             System.err.println(err);
         }
     }
