@@ -35,10 +35,8 @@ public class DatabaseInit {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "lib/derbyrun.jar", "server", "start");
             processBuilder.redirectErrorStream(true);
-
             Process process = processBuilder.start();
-            process.waitFor();
-        } catch (IOException | InterruptedException err) {
+        } catch (IOException  err) {
             System.err.println("Failed to start Derby server.");
             err.printStackTrace();
         }
