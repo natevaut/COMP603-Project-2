@@ -20,12 +20,7 @@ public class DatabaseInit {
      */
     public DatabaseInit() {
         startServer();
-
-        try {
-            conn = DriverManager.getConnection(url, username, password);
-        } catch (SQLException err) {
-            err.printStackTrace();
-        }
+        connect();
     }
 
     /**
@@ -36,8 +31,19 @@ public class DatabaseInit {
             ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "lib/derbyrun.jar", "server", "start");
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
-        } catch (IOException  err) {
+        } catch (IOException err) {
             System.err.println("Failed to start Derby server.");
+            err.printStackTrace();
+        }
+    }
+
+    /**
+     * Connects to the database.
+     */
+    public void connect() {
+        try {
+            conn = DriverManager.getConnection(url, username, password);
+        } catch (SQLException err) {
             err.printStackTrace();
         }
     }
