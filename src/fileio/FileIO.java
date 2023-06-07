@@ -111,14 +111,18 @@ public class FileIO {
         newPetsFile(true);
     }
 
+    /**
+     * Create the pets file. Used in the public pets file methods.
+     */
     private static void newPetsFile(boolean overwrite) {
         File file = new File(FILENAME);
 
-        if (file.exists())
+        if (file.exists()) {
             if (overwrite)
                 file.delete();
             else
                 return;
+        }
 
         try {
             file.createNewFile();
