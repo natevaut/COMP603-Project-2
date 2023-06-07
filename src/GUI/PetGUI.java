@@ -15,14 +15,15 @@ import javax.swing.JOptionPane;
 public class PetGUI {
     private JFrame frame;
     private JTextField textField;
+    
     private JButton adoptButton;
     
     private JLabel welcomeLabel;
     
     public PetGUI() {
         
-        int width = 800;
-        int height = 450;
+        int width = 600;
+        int height = 350;
         
         //main window
         frame = new JFrame("Pet Simulator");
@@ -46,6 +47,10 @@ public class PetGUI {
         adoptButton.addActionListener(e -> {
             int choice = JOptionPane.showOptionDialog(frame, "Do you already have a pet?", "Pet Adoption",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if (choice == JOptionPane.YES_OPTION) {
+                PetSelection petSelection = new PetSelection();
+                petSelection.display();
+            }
         });
         frame.add(adoptButton);
         
