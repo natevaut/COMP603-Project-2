@@ -1,4 +1,4 @@
-package test;
+package test.animals;
 
 import java.util.ArrayList;
 
