@@ -1,5 +1,7 @@
 package test;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import animals.Species;
@@ -10,13 +12,25 @@ class TestSpecies {
     @Test
     void testNewSpeciesFromString() {
         // Ensure species is associated correctly
-        assert Species.newSpeciesFromString("Dog").getSpecies().name().toLowerCase().equals("dog");
-        assert Species.newSpeciesFromString("cat").getSpecies().name().toLowerCase().equals("cat");
-        assert Species.newSpeciesFromString("RABBIT").getSpecies().name().toLowerCase().equals("rabbit");
+        assert Species.newSpeciesFromString("Dog").getSpecies().name().equalsIgnoreCase("dog");
+        assert Species.newSpeciesFromString("cat").getSpecies().name().equalsIgnoreCase("cat");
+        assert Species.newSpeciesFromString("RABBIT").getSpecies().name().equalsIgnoreCase("rabbit");
+        assert Species.newSpeciesFromString("kangaroo") == null;
 
         // Ensure animal is initialised with null values
         assert Species.newSpeciesFromString("RABBIT").getName() == null;
-        assert Species.newSpeciesFromString("RABBIT").getNutrition() == 0;
+        assert Species.newSpeciesFromString("hamster").getNutrition() == 0;
+    }
+
+    @Test
+    void testSpeciesList() {
+        ArrayList<String> specieses = new ArrayList<>();
+        for (String species : Species.getSpeciesList())
+            specieses.add(species.toLowerCase());
+        
+        assert specieses.contains("dog");
+        assert specieses.contains("cat");
+        assert specieses.contains("rabbit");
     }
 
 }
