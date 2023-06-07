@@ -58,7 +58,7 @@ public class FileIO {
      */
     public static HashMap<String, Animal> loadFromFile() {
         touchPetsFile();
-        
+
         HashMap<String, Animal> pets = new HashMap<>();
 
         try {
@@ -101,26 +101,24 @@ public class FileIO {
      * Creates the pets file if it does not yet exist.
      */
     public static void touchPetsFile() {
-        File file = new File(FILENAME);
-
-        if (file.exists())
-            return;
-
-        try {
-            file.createNewFile();
-        } catch (IOException err) {
-            err.printStackTrace();
-        }
+        newPetsFile(false);
     }
 
     /**
      * Sets up the pets file. Deletes file if it already exists.
      */
     public static void newPetsFile() {
+        newPetsFile(true);
+    }
+
+    private static void newPetsFile(boolean overwrite) {
         File file = new File(FILENAME);
 
         if (file.exists())
-            file.delete();
+            if (overwrite)
+                file.delete();
+            else
+                return;
 
         try {
             file.createNewFile();
