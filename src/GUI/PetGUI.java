@@ -6,17 +6,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  * @author Alvina Angelin 22152692
  */
-import java.awt.Font;
-import javax.swing.JOptionPane;
+
 public class PetGUI {
     private JFrame frame;
     private JTextField textField;
     
     private JButton adoptButton;
+    private JButton exitButton;
     
     private JLabel welcomeLabel;
     
@@ -30,6 +35,12 @@ public class PetGUI {
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
+        
+        // Add background image
+        // ImageIcon backgroundIcon = new ImageIcon("images/background.gif"); // Replace with your image file path
+        // JLabel backgroundLabel = new JLabel(backgroundIcon);
+        // backgroundLabel.setBounds(0, 0, width, height);
+        // frame.add(backgroundLabel);
         
         //welcome label
         welcomeLabel = new JLabel("Welcome to Pet Simulator");
@@ -50,10 +61,27 @@ public class PetGUI {
             if (choice == JOptionPane.YES_OPTION) {
                 PetSelection petSelection = new PetSelection();
                 petSelection.display();
+            } else {
+                NewPet newPet = new NewPet();
+                newPet.display();
             }
         });
         frame.add(adoptButton);
         
+        //exit button
+        exitButton = new JButton("EXIT");
+        int exitwidth = 500;
+        exitButton.setBounds(width/2 - exitwidth/2, 250, exitwidth, 20);
+        exitButton.setHorizontalAlignment(SwingConstants.CENTER);
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        frame.add(exitButton);
+        
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }
