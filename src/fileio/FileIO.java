@@ -23,6 +23,7 @@ public class FileIO {
 	 */
 	public static boolean saveToFile(Animal animal) {
 		touchPetsFile();
+
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME, true));
 			pw.printf("%s", animal.getName().toUpperCase());
@@ -59,6 +60,7 @@ public class FileIO {
 	public static HashMap<String, Animal> loadFromFile() {
 		touchPetsFile();
 
+
 		HashMap<String, Animal> pets = new HashMap<>();
 
 		try {
@@ -81,7 +83,6 @@ public class FileIO {
 				float love = scan.nextFloat();
 
 				Animal pet = Animal.createPet(species, name, nutrition, hydration, love);
-
 				if (pets.containsKey(name))
 					pets.remove(name);
 				pets.put(name, pet);
