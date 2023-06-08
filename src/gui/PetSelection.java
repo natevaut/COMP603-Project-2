@@ -1,7 +1,12 @@
 package gui;
 
+import java.util.HashMap;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import animals.Animal;
+import db.PetsDatabase;
 
 /**
  * @author Alvina Angelin 22152692
@@ -9,6 +14,12 @@ import javax.swing.JFrame;
 
 public class PetSelection {
     private JFrame frame;
+    
+    private PetsDatabase pdb;
+    
+    public PetSelection(PetsDatabase pdb) {
+    	this.pdb = pdb;
+    }
     
     public void display() {
         int frameWidth = 400;
@@ -23,12 +34,18 @@ public class PetSelection {
         int buttonHeight = 40;
         int spacing = 20;
         
-        int x = frameWidth / 2 - buttonWidth /2;
-        int y = frameHeight / 2 - (2 * buttonHeight + spacing) / 2;
+        int startX = frameWidth / 2 - buttonWidth /2;
+        int startY = spacing;
         
-        JButton button1 = new JButton("Pet 1");
-        button1.setBounds(x, y, buttonWidth, buttonHeight);
-        frame.add(button1);
+        // load pets from database
+        HashMap<String, Animal> pets = pdb.getAllPets();
+        
+        int x = startX, y = startY;
+        for (Animal pet : pets.values()) {
+        	JButton petButton = new JButton(pet.getName());
+        	petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
+        	frame.add(petButton);
+        }
         
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

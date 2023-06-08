@@ -1,14 +1,17 @@
 package gui;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import db.PetsDatabase;
 
 /**
  * @author Alvina Angelin 22152692
@@ -16,6 +19,7 @@ import javax.swing.JOptionPane;
 
 public class PetGUI {
     public JFrame frame;
+    
     private JTextField textField;
     
     private JButton adoptButton;
@@ -23,7 +27,12 @@ public class PetGUI {
     
     private JLabel welcomeLabel;
     
-    public PetGUI() {
+    private PetsDatabase pdb;
+    
+    public PetGUI(PetsDatabase pdb) {
+    	
+    	// set database
+    	this.pdb = pdb;
         
         int width = 600;
         int height = 350;
@@ -51,7 +60,7 @@ public class PetGUI {
             int choice = JOptionPane.showOptionDialog(frame, "Do you already have a pet?", "Pet Adoption",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
             if (choice == JOptionPane.YES_OPTION) {
-                PetSelection petSelection = new PetSelection();
+                PetSelection petSelection = new PetSelection(pdb);
                 petSelection.display();
             } else {
                 NewPet newPet = new NewPet(this);
