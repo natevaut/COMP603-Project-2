@@ -56,10 +56,10 @@ public class MainMenu {
             if (choice == JOptionPane.YES_OPTION) {
                 PetSelectionMenu petSelection = new PetSelectionMenu(pdb);
                 petSelection.display();
-            } else {
+            } else if (choice == JOptionPane.NO_OPTION) {
                 NewPetMenu newPet = new NewPetMenu(this);
                 newPet.display();
-            }
+            } 
         });
         frame.add(adoptButton);
         
