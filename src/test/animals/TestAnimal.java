@@ -29,4 +29,17 @@ public class TestAnimal {
 		assert animal.getLove() == 0.6f;
 	}
 
+	@Test
+	void testReduceStats() {
+		Animal animal = new Animal() {
+		};
+		animal.loadAttributes("Ana", 1, 1, 1);
+		animal.makeHungry();
+		assert animal.getNutrition() < 1;
+		animal.makeThirsty();
+		assert animal.getHydration() < 1;
+		animal.makeLonely();
+		assert animal.getLove() < 1;
+	}
+
 }
