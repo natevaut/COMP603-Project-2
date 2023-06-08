@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import animals.Animal;
 import animals.Species;
+import db.DatabaseInit;
+import db.PetsDatabase;
 import fileio.FileIO;
 
 /** @author Nate Evans 21144881 */
@@ -19,8 +21,11 @@ public class Program {
 
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
-        FileIO.cleanDuplicates();
-        while (!FileIO.createPetsFile());
+
+        FileIO.touchPetsFile();
+        DatabaseInit db = new DatabaseInit();
+        PetsDatabase pdb = new PetsDatabase(db.conn);
+        pdb.loadPetsFromFile();
 
         System.out.println("----------------");
         System.out.println("");
@@ -47,10 +52,11 @@ public class Program {
         }
         System.out.println();
 
-        // load one from disc
+
+        // load pet from database
         if (ans == 'y') {
 
-            HashMap<String, Animal> pets = FileIO.loadFromFile();
+            HashMap<String, Animal> pets = pdb.getAllPets();
 
             System.out.println("Loading pets from disc...");
             System.out.println();
@@ -123,7 +129,7 @@ public class Program {
         ASCII.printAnimal(animal);
         System.out.println(petName);
         System.out.println();
-        
+
         // Print pet stats
         System.out.println(animal.getName() + "'s stats:");
         printStats(animal);
@@ -215,18 +221,19 @@ public class Program {
                 System.out.println("Do you want to continue with your pet? (y/n)");
                 input = scanner.next().toLowerCase().charAt(0);
                 // save pet to disc and exit
-                if (input == 'y');
+                if (input == 'y') {
+                }
                 else if (input == 'n') {
-                	System.out.println();
+                    System.out.println();
                     System.out.println(animal.getName() + "'s final stats:");
-                	printStats(animal);
-                	System.out.println();
+                    printStats(animal);
+                    System.out.println();
                     System.out.println("Saving pet to file...");
-                    FileIO.saveToFile(animal);
+                    pdb.savePet(animal);
+                    pdb.dumpToFile();
                     System.out.println("Exiting program");
                     running = false;
-                }
-                else {
+                } else {
                     input = 0;
                     System.out.println("Invalid input!");
                 }
@@ -236,7 +243,7 @@ public class Program {
         scanner.close();
 
     }
-    
+
     /**
      * Prints an animal's stats to the console
      */

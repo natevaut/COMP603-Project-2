@@ -22,7 +22,7 @@ public class FileIO {
 	 * Saves a new animal to the pets file
 	 */
 	public static boolean saveToFile(Animal animal) {
-		while (!createPetsFile());
+		touchPetsFile();
 
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME, true));
@@ -44,10 +44,22 @@ public class FileIO {
 	}
 
 	/**
-	 * Loads all animals from the pets file and returns them as a hash map of names to animal data
+	 * Save all pets to the pets file
+	 */
+	public static void saveToFile(HashMap<String, Animal> pets) {
+		newPetsFile();
+		for (Animal animal : pets.values()) {
+			saveToFile(animal);
+		}
+	}
+
+	/**
+	 * Loads all animals from the pets file and returns them as a hash map of names
+	 * to animal data
 	 */
 	public static HashMap<String, Animal> loadFromFile() {
-		while (!createPetsFile());
+		touchPetsFile();
+
 
 		HashMap<String, Animal> pets = new HashMap<>();
 
@@ -70,18 +82,16 @@ public class FileIO {
 				unused = scan.next(); // ignore `love=
 				float love = scan.nextFloat();
 
-				Animal pet = Species.newSpeciesFromString(species);
-				pet.loadAttributes(name, nutrition, hydration, love);
-
+				Animal pet = Animal.createPet(species, name, nutrition, hydration, love);
 				if (pets.containsKey(name))
-				    pets.remove(name);
+					pets.remove(name);
 				pets.put(name, pet);
 			}
 
 			br.close();
 
 		} catch (FileNotFoundException e) {
-			while (!createPetsFile());
+			newPetsFile();
 		} catch (IOException e) {
 		}
 
@@ -89,37 +99,37 @@ public class FileIO {
 	}
 
 	/**
-	 * Sets up the pets file
+	 * Creates the pets file if it does not yet exist.
 	 */
-	public static boolean createPetsFile() {
-		File file = new File(FILENAME);
-	    if (file.exists()) {
-	    	return true;
-	    } else {
-	        try {
-	            file.createNewFile();
-	            return true;
-	        } catch (IOException err) {
-	            return false;
-	        }
-	    }
+	public static void touchPetsFile() {
+		newPetsFile(false);
 	}
 
 	/**
-	 * Removes duplicate animals from the pets file
+	 * Sets up the pets file. Deletes file if it already exists.
 	 */
-	public static void cleanDuplicates() {
-		HashMap<String, Animal> animals = loadFromFile();
+	public static void newPetsFile() {
+		newPetsFile(true);
+	}
+
+	/**
+	 * Create the pets file. Used in the public pets file methods.
+	 */
+	private static void newPetsFile(boolean overwrite) {
 		File file = new File(FILENAME);
 
-		if (file.exists())
-			file.delete();
-		while (!createPetsFile());
-
-		for (Animal animal : animals.values()) {
-			saveToFile(animal);
+		if (file.exists()) {
+			if (overwrite)
+				file.delete();
+			else
+				return;
 		}
 
+		try {
+			file.createNewFile();
+		} catch (IOException err) {
+			err.printStackTrace();
+		}
 	}
 
 }
