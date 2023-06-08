@@ -29,6 +29,10 @@ public class PetGame {
         this.pet = Species.newSpeciesFromString(species);
         pet.setName(name);
     }
+    
+    public PetGame(Animal pet) {
+        this.pet = pet;
+    }
 
     public void display() {
         int frameWidth = 400;

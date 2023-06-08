@@ -47,6 +47,11 @@ public class PetSelection {
         for (Animal pet : pets.values()) {
         	JButton petButton = new JButton(pet.getName());
         	petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
+        	petButton.addActionListener(e -> {
+                PetGame petGame = new PetGame(pet);
+                petGame.display();
+                frame.dispose();
+        	});
         	frame.add(petButton);
         }
         
