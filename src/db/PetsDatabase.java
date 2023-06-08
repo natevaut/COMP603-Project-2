@@ -45,7 +45,6 @@ public class PetsDatabase {
                     Column.TYPE.name(), Column.NUTRITION.name(), Column.HYDRATION.name(), Column.LOVE.name());
             statement.executeUpdate(sql);
         } catch (SQLException err) {
-            System.err.println(err);
             err.printStackTrace();
         }
 
@@ -68,7 +67,6 @@ public class PetsDatabase {
                     + String.format("('%s', '%s', %f, %f, %f)", name, type, nutr, hydr, love);
             statement.executeUpdate(sql);
         } catch (SQLException err) {
-            System.err.println(err);
             err.printStackTrace();
         }
     }
