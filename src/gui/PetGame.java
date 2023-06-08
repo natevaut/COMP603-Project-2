@@ -111,7 +111,7 @@ public class PetGame {
         GameLoop main = new GameLoop(pet);
         main.titleLabel = statusTitleLabel;
         main.infoLabel = statusInfoLabel;
-        main.statusButtons = new JButton[] { action1Button, action2Button, action3Button };
+        main.buttons = new JButton[] { action1Button, action2Button, action3Button };
         main.run();
         
     }
