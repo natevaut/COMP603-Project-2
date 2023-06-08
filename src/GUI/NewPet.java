@@ -45,7 +45,11 @@ public class NewPet {
         });
         JButton confirmButton = new JButton("Confirm");
         confirmButton.addActionListener(e -> {
-            
+            String species = (String)petComboBox.getSelectedItem();
+            String name = nameInput.getText();
+            PetGame petGame = new PetGame(species, name);
+            petGame.display();
+            //make it so if u confirm the main menu petgui closes
         });
        
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
