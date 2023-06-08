@@ -15,12 +15,12 @@ import javax.swing.JPanel;
  * @author Alvina Angelin 22152692
  */
 
-public class PetSelection {
+public class PetSelectionMenu {
     private JFrame frame;
     
     private PetsDatabase pdb;
     
-    public PetSelection(PetsDatabase pdb) {
+    public PetSelectionMenu(PetsDatabase pdb) {
     	this.pdb = pdb;
     }
     

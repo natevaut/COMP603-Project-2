@@ -19,7 +19,7 @@ public class MainGUI {
         pdb.loadPetsFromFile();
         
         SwingUtilities.invokeLater(() -> {
-            new PetGUI(pdb);
+            new MainMenu(pdb);
         });
     }
 }

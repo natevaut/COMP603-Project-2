@@ -13,15 +13,15 @@ import javax.swing.JTextField;
 /**
  * @author Alvina Angelin 22152692
  */
-public class NewPet {
+public class NewPetMenu {
     
     private JFrame frame;
     private JComboBox<String> petComboBox;
     private JTextField nameInput;
     
-    private PetGUI petGUI;
+    private MainMenu petGUI;
     
-    public NewPet(PetGUI petGUI) {
+    public NewPetMenu(MainMenu petGUI) {
         this.petGUI = petGUI;
     }
     

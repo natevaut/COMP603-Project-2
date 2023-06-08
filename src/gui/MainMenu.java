@@ -17,7 +17,7 @@ import db.PetsDatabase;
  * @author Alvina Angelin 22152692
  */
 
-public class PetGUI {
+public class MainMenu {
     public JFrame frame;
     
     private JTextField textField;
@@ -29,7 +29,7 @@ public class PetGUI {
     
     private PetsDatabase pdb;
     
-    public PetGUI(PetsDatabase pdb) {
+    public MainMenu(PetsDatabase pdb) {
     	
     	// set database
     	this.pdb = pdb;
