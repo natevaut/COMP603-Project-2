@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import animals.Animal;
 import animals.Species;

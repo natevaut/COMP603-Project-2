@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import animals.Species;
 import java.awt.BorderLayout;
