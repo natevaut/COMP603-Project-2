@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import animals.Animal;
@@ -17,6 +18,7 @@ public class GameLoop {
 
 	public boolean running;
 	public Animal pet;
+	public JFrame gameFrame;
 	public JLabel titleLabel, infoLabel;
 	public JButton[] buttons;
 
@@ -126,13 +128,13 @@ public class GameLoop {
 		});
 		this.buttons[1].addActionListener(e -> {
 			// Exit without saving button
-			// TODO close window
+			this.gameFrame.dispose();
 			running = false;
 		});
-		this.buttons[1].addActionListener(e -> {
+		this.buttons[2].addActionListener(e -> {
 			// Exit and save button
 			// TODO save pet
-			// TODO close window
+			this.gameFrame.dispose();
 			running = false;
 		});
 	}

@@ -109,6 +109,7 @@ public class PetGame {
         
         // game loop
         GameLoop main = new GameLoop(pet);
+        main.gameFrame = frame;
         main.titleLabel = statusTitleLabel;
         main.infoLabel = statusInfoLabel;
         main.buttons = new JButton[] { action1Button, action2Button, action3Button };
