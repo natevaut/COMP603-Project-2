@@ -60,7 +60,6 @@ public class FileIO {
 	public static HashMap<String, Animal> loadFromFile() {
 		touchPetsFile();
 
-
 		HashMap<String, Animal> pets = new HashMap<>();
 
 		try {

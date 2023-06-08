@@ -52,7 +52,6 @@ public class Program {
         }
         System.out.println();
 
-
         // load pet from database
         if (ans == 'y') {
 
