@@ -3,7 +3,7 @@ package animals;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Animal {
+public abstract class Animal {
 
     protected Species species;
     protected String name;
@@ -29,7 +29,17 @@ public class Animal {
     }
 
     /**
-     * Loads attributes and saves them into the current pet's stats
+     * Creates a new pet loaded with given attributes set.
+     * @author Nate Evans 21144881
+     */
+    public static Animal createPet(String species, String name, float nutr, float hydr, float love) {
+        Animal pet = Species.newSpeciesFromString(species);
+        pet.loadAttributes(name, nutr, hydr, love);
+        return pet;
+    }
+
+    /**
+     * Loads attributes and saves them into the current pet's stats.
      * @author Nate Evans 21144881
      */
     public void loadAttributes(String name, float n, float h, float l) {
