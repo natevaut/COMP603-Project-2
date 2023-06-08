@@ -1,4 +1,4 @@
-package main;
+package cli;
 
 import animals.Animal;
 import animals.Species;
