@@ -1,18 +1,21 @@
 package gui;
 
-import animals.Animal;
-import animals.Species;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import animals.Animal;
+import animals.Species;
+import run.GameLoop;
 
 /**
  * @author Alvina Angelin 22152692
@@ -21,9 +24,6 @@ public class PetGame {
 
     private JFrame frame;
     private Animal pet;
-
-    private JLabel petLabel;
-    private JLabel nameLabel;
 
     public PetGame(String species, String name) {
         this.pet = Species.newSpeciesFromString(species);
@@ -35,8 +35,8 @@ public class PetGame {
     }
 
     public void display() {
-        int frameWidth = 400;
-        int frameHeight = 300;
+        int frameWidth = 350;
+        int frameHeight = 350;
 
         frame = new JFrame("Virtual Pet");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,49 +50,54 @@ public class PetGame {
         constraints.gridy = 0;
         constraints.weightx = 1.0;
 
-        petLabel = new JLabel("Your Pet " + pet.getSpecies());
+        // pet main text
+        JLabel petLabel = new JLabel("Your pet " + pet.getSpecies().name().toLowerCase() + ": " + pet.getName());
         petLabel.setFont(new Font("Arial", Font.BOLD, 20));
         petLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
-        //image
+        // pet image
         ImageIcon image = doImage(pet.getSpecies());
         Image resizedImage = image.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
         ImageIcon finalImage = new ImageIcon(resizedImage);
         JLabel imageLabel = new JLabel(finalImage);
 
-        //display pet name
-        nameLabel = new JLabel("Name: " + pet.getName());
-        nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        // status label 1
+        JLabel statusTitleLabel = new JLabel("Placeholder");
+        statusTitleLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        statusTitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel title = new JLabel("Your pet is hungry!");
-        title.setFont(new Font("Arial", Font.PLAIN, 14));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
+        // status label 2
+        JLabel statusInfoLabel = new JLabel("Placeholder");
+        statusInfoLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        statusInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
         //buttons
-        JButton flyButton = new JButton("Feed Fly");
-        JButton snailButton = new JButton("Feed Snail");
-        JButton wormButton = new JButton("Feed Worm");
+        JButton action1Button = new JButton("Placeholder");
+        JButton action2Button = new JButton("Placeholder");
+        JButton action3Button = new JButton("Placeholder");
         
         JPanel buttonPanel = new JPanel(new FlowLayout());
-        buttonPanel.add(flyButton);
-        buttonPanel.add(snailButton);
-        buttonPanel.add(wormButton);
+        buttonPanel.add(action1Button);
+        buttonPanel.add(action2Button);
+        buttonPanel.add(action3Button);
         
-        //pet label
+        // put pet label
         constraints.gridy = 0;
         panel.add(petLabel, constraints);
 
-        //image
+        // put image
         constraints.gridy = 1;
         panel.add(imageLabel, constraints);
 
+        // put name label
         constraints.gridy = 2;
-        panel.add(nameLabel, constraints);
+        panel.add(statusTitleLabel, constraints);
 
+        // put status title
         constraints.gridy = 3;
-        panel.add(title, constraints);;
+        panel.add(statusInfoLabel, constraints);;
 
+        // put action buttons
         constraints.gridy = 4;
         constraints.gridwidth = 2;
         panel.add(buttonPanel, constraints);
@@ -101,6 +106,14 @@ public class PetGame {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        
+        // game loop
+        GameLoop main = new GameLoop(pet);
+        main.titleLabel = statusTitleLabel;
+        main.infoLabel = statusInfoLabel;
+        main.statusButtons = new JButton[] { action1Button, action2Button, action3Button };
+        main.run();
+        
     }
 
     private ImageIcon doImage(Species species) {
