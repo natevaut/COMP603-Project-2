@@ -59,7 +59,6 @@ public class NewPetMenu {
             PetGame petGame = new PetGame(this.petGUI.pdb, pet);
             petGame.display();
             frame.dispose();
-            petGUI.frame.dispose();
         });
        
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
