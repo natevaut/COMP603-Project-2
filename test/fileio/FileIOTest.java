@@ -1,18 +1,16 @@
-package test.fileio;
-
-import org.junit.jupiter.api.Test;
+package fileio;
 
 import animals.Animal;
 import animals.Cat;
 import animals.Dog;
 import animals.Species;
-import fileio.FileIO;
+import org.junit.Test;
 
 /** @author Nate Evans 21144881 */
-public class TestFileIO {
+public class FileIOTest {
 
 	@Test
-	void testSaveToFile() {
+	public void testSaveToFile() {
 		Animal dog = new Dog();
 		dog.setName("DAVE");
 		assert FileIO.saveToFile(dog);
@@ -25,7 +23,7 @@ public class TestFileIO {
 	}
 
 	@Test
-	void testLoadFromFile() {
+	public void testLoadFromFile() {
 		assert FileIO.loadFromFile().containsKey("DAVE");
 		assert FileIO.loadFromFile().containsKey("STEVE");
 		assert FileIO.loadFromFile().containsKey("HARRY");

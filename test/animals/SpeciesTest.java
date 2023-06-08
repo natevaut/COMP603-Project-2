@@ -1,16 +1,13 @@
-package test.animals;
+package animals;
 
 import java.util.ArrayList;
-
-import org.junit.jupiter.api.Test;
-
-import animals.Species;
+import org.junit.Test;
 
 /** @author Nate Evans 21144881 */
-class TestSpecies {
+public class SpeciesTest {
 
     @Test
-    void testNewSpeciesFromString() {
+    public void testNewSpeciesFromString() {
         // Ensure species is associated correctly
         assert Species.newSpeciesFromString("Dog").getSpecies().name().equalsIgnoreCase("dog");
         assert Species.newSpeciesFromString("cat").getSpecies().name().equalsIgnoreCase("cat");
@@ -23,11 +20,12 @@ class TestSpecies {
     }
 
     @Test
-    void testSpeciesList() {
+    public void testSpeciesList() {
         ArrayList<String> specieses = new ArrayList<>();
-        for (String species : Species.getSpeciesList())
+        for (String species : Species.getSpeciesList()) {
             specieses.add(species.toLowerCase());
-        
+        }
+
         assert specieses.contains("dog");
         assert specieses.contains("cat");
         assert specieses.contains("rabbit");

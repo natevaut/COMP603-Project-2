@@ -1,18 +1,17 @@
-package test.animals;
+package animals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import animals.Frog;
+/** @author Alvina Angelin 22152692 */
+public class FrogTest {
 
-/** @author Nate Evans 21144881 */
-class TestFrog {
     @Test
-    void testFrog() {
+    public void testFrog() {
         assert new Frog().getSpecies().name().equalsIgnoreCase("frog");
     }
 
     @Test
-    void testFrogStats() {
+    public void testFrogStats() {
         Frog frog = new Frog();
         frog.drink("water");
         assert frog.getHydration() == 0.7f;
