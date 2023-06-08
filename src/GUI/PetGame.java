@@ -2,11 +2,17 @@ package GUI;
 
 import animals.Animal;
 import animals.Species;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,28 +44,62 @@ public class PetGame {
         frame.setSize(frameWidth, frameHeight);
         frame.setLayout(new FlowLayout());
 
-        JPanel panel = new JPanel(new GridLayout(2, 2));
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
 
         petLabel = new JLabel("Your Pet " + pet.getSpecies());
         petLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        panel.add(petLabel);
-         
+        petLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
         //image
         ImageIcon image = doImage(pet.getSpecies());
         Image resizedImage = image.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
         ImageIcon finalImage = new ImageIcon(resizedImage);
         JLabel imageLabel = new JLabel(finalImage);
-        frame.add(imageLabel);
 
         //display pet name
         nameLabel = new JLabel("Name: " + pet.getName());
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(nameLabel);
-        
-        
 
-        frame.getContentPane().add(panel);
+        JLabel title = new JLabel("Your pet is hungry!");
+        title.setFont(new Font("Arial", Font.PLAIN, 14));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        //buttons
+        JButton flyButton = new JButton("Feed Fly");
+        JButton snailButton = new JButton("Feed Snail");
+        JButton wormButton = new JButton("Feed Worm");
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        buttonPanel.add(flyButton);
+        buttonPanel.add(snailButton);
+        buttonPanel.add(wormButton);
+        
+        //pet label
+        constraints.gridy = 0;
+        panel.add(petLabel, constraints);
+
+        //image
+        constraints.gridy = 1;
+        panel.add(imageLabel, constraints);
+
+        constraints.gridy = 2;
+        panel.add(nameLabel, constraints);
+
+        constraints.gridy = 3;
+        panel.add(title, constraints);;
+
+        constraints.gridy = 4;
+        constraints.gridwidth = 2;
+        panel.add(buttonPanel, constraints);
+
+        frame.add(panel);
+        frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
