@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import animals.Animal;
+import db.PetsDatabase;
 
 /** @author Nate Evans 21144881 */
 public class GameLoop {
@@ -17,6 +18,7 @@ public class GameLoop {
 	}
 
 	public boolean running;
+	public PetsDatabase pdb;
 	public Animal pet;
 	public JFrame gameFrame;
 	public JLabel titleLabel, infoLabel;
@@ -117,8 +119,8 @@ public class GameLoop {
 		
 		// change buttons
 		this.setButtonText(1, "Continue");
-		this.setButtonText(2, "Exit without Saving");
-		this.setButtonText(3, "Exit and Save");
+		this.setButtonText(2, "Save & Exit");
+		this.setButtonText(3, "Quit");
 		
 		// update action listeners
 		this.clearActionListeners(this.buttons);
@@ -127,13 +129,14 @@ public class GameLoop {
 			runOnce();
 		});
 		this.buttons[1].addActionListener(e -> {
-			// Exit without saving button
+			// Save and exit button
+			pdb.savePet(this.pet);
+			pdb.dumpToFile();
 			this.gameFrame.dispose();
 			running = false;
 		});
 		this.buttons[2].addActionListener(e -> {
-			// Exit and save button
-			// TODO save pet
+			// Exit without saving button
 			this.gameFrame.dispose();
 			running = false;
 		});

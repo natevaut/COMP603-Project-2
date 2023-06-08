@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 import animals.Animal;
 import animals.Species;
+import db.PetsDatabase;
 import run.GameLoop;
 
 /**
@@ -23,14 +24,11 @@ import run.GameLoop;
 public class PetGame {
 
     private JFrame frame;
+    private PetsDatabase pdb;
     private Animal pet;
-
-    public PetGame(String species, String name) {
-        this.pet = Species.newSpeciesFromString(species);
-        pet.setName(name);
-    }
     
-    public PetGame(Animal pet) {
+    public PetGame(PetsDatabase pdb, Animal pet) {
+    	this.pdb = pdb;
         this.pet = pet;
     }
 
@@ -109,6 +107,7 @@ public class PetGame {
         
         // game loop
         GameLoop main = new GameLoop(pet);
+        main.pdb = pdb;
         main.gameFrame = frame;
         main.titleLabel = statusTitleLabel;
         main.infoLabel = statusInfoLabel;

@@ -1,5 +1,6 @@
 package gui;
 
+import animals.Animal;
 import animals.Species;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -51,7 +52,11 @@ public class NewPetMenu {
         confirmButton.addActionListener(e -> {
             String species = (String)petComboBox.getSelectedItem();
             String name = nameInput.getText();
-            PetGame petGame = new PetGame(species, name);
+            
+            Animal pet = Species.newSpeciesFromString(species);
+            pet.setName(name);
+            
+            PetGame petGame = new PetGame(this.petGUI.pdb, pet);
             petGame.display();
             frame.dispose();
             petGUI.frame.dispose();

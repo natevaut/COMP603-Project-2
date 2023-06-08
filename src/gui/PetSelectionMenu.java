@@ -48,7 +48,7 @@ public class PetSelectionMenu {
         	JButton petButton = new JButton(pet.getName());
         	petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
         	petButton.addActionListener(e -> {
-                PetGame petGame = new PetGame(pet);
+                PetGame petGame = new PetGame(this.pdb, pet);
                 petGame.display();
                 frame.dispose();
         	});

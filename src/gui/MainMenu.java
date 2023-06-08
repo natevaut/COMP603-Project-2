@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import db.PetsDatabase;
@@ -19,6 +18,7 @@ import db.PetsDatabase;
 
 public class MainMenu {
     public JFrame frame;
+    public PetsDatabase pdb;
     
     private JButton adoptButton;
     private JButton exitButton;
@@ -26,6 +26,7 @@ public class MainMenu {
     private JLabel welcomeLabel;
     
     public MainMenu(PetsDatabase pdb) {
+    	this.pdb = pdb;
         
         int width = 600;
         int height = 350;
