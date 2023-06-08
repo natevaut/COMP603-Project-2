@@ -2,10 +2,13 @@ package GUI;
 
 import animals.Species;
 import java.awt.BorderLayout;
-import javax.swing.BorderFactory;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -13,30 +16,51 @@ import javax.swing.JTextField;
  * @author Alvina Angelin 22152692
  */
 public class NewPet {
+    
     private JFrame frame;
-    private JTextField text;
+    private JComboBox<String> petComboBox;
+    private JTextField nameInput;
     
     public void display() {
         int frameWidth = 400;
-        int frameHeight = 300;
+        int frameHeight = 250;
         
-        frame = new JFrame("Pick and Name Your Pet");
+        frame = new JFrame("Select and Name New Pet");
         frame.setSize(frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLayout(null);
         
-        //Pet choices
-        JPanel petChoices = new JPanel();
-        petChoices.setBorder(BorderFactory.createTitledBorder("Select a Pet"));
-        petChoices.setSize(100, 40);
-        frame.add(petChoices);
+        JPanel panel = new JPanel(new GridLayout(5,3));
         
+        JLabel petLabel = new JLabel("Select a Pet: ");
         String[] petOptions = Species.getSpeciesList();
-        JComboBox<String> box = new JComboBox<>(petOptions);
-        box.setSize(100, 40);
-        frame.add(box);
+        petComboBox = new JComboBox<>(petOptions);
         
+        JLabel nameLabel = new JLabel("Enter a Name: ");
+        nameInput = new JTextField(15);
+        
+        //Confirm and Cancel Button
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(e -> {
+            frame.dispose();
+        });
+        JButton confirmButton = new JButton("Confirm");
+        confirmButton.addActionListener(e -> {
+            
+        });
+       
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        bottomPanel.add(cancelButton);
+        bottomPanel.add(confirmButton);
+        
+        panel.add(petLabel);
+        panel.add(petComboBox);
+        panel.add(nameLabel);
+        panel.add(nameInput);
+        panel.add(bottomPanel);
+        
+        frame.getContentPane().add(panel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        
     }
 }
