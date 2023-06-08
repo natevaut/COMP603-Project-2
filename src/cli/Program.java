@@ -52,6 +52,7 @@ public class Program {
         }
         System.out.println();
 
+
         // load pet from database
         if (ans == 'y') {
 
@@ -220,8 +221,8 @@ public class Program {
                 System.out.println("Do you want to continue with your pet? (y/n)");
                 input = scanner.next().toLowerCase().charAt(0);
                 // save pet to disc and exit
-                if (input == 'y')
-                    ;
+                if (input == 'y') {
+                }
                 else if (input == 'n') {
                     System.out.println();
                     System.out.println(animal.getName() + "'s final stats:");

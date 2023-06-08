@@ -3,7 +3,7 @@ package animals;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Animal {
+public abstract class Animal {
 
     protected Species species;
     protected String name;
