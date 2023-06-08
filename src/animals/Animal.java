@@ -29,7 +29,7 @@ public class Animal {
     }
 
     /**
-     * Creates a new pet loaded with given attributes set
+     * Creates a new pet loaded with given attributes set.
      * @author Nate Evans 21144881
      */
     public static Animal createPet(String species, String name, float nutr, float hydr, float love) {
@@ -39,7 +39,7 @@ public class Animal {
     }
 
     /**
-     * Loads attributes and saves them into the current pet's stats
+     * Loads attributes and saves them into the current pet's stats.
      * @author Nate Evans 21144881
      */
     public void loadAttributes(String name, float n, float h, float l) {

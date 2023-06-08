@@ -141,81 +141,78 @@ public class Program {
             System.out.println();
             System.out.print(petName + " is now ");
             switch (need) {
-            case 0: { // hungry
-                animal.makeHungry();
-                System.out.println(asPercent(1 - animal.getNutrition()) + " hungry!");
+                case 0: { // hungry
+                    animal.makeHungry();
+                    System.out.println(asPercent(1 - animal.getNutrition()) + " hungry!");
 
-                String[] foods = animal.getFoods();
-                HashMap<String, Float> nutrition = animal.getNutritionData();
+                    String[] foods = animal.getFoods();
+                    HashMap<String, Float> nutrition = animal.getNutritionData();
 
-                String food = null;
-                while (food == null) {
-                    System.out.println("What will you feed " + petName + "?");
-                    System.out.printf("%s, %s, or %s\n", foods[0], foods[1], foods[2]);
+                    String food = null;
+                    while (food == null) {
+                        System.out.println("What will you feed " + petName + "?");
+                        System.out.printf("%s, %s, or %s\n", foods[0], foods[1], foods[2]);
 
-                    String inputFood = scanner.next().toLowerCase();
-                    if (nutrition.containsKey(inputFood)) {
-                        food = inputFood;
-                    } else {
-                        System.out.println("That is not a valid food!\n");
+                        String inputFood = scanner.next().toLowerCase();
+                        if (nutrition.containsKey(inputFood)) {
+                            food = inputFood;
+                        } else {
+                            System.out.println("That is not a valid food!\n");
+                        }
+                        animal.eat(food);
+                        System.out.println("Replenished " + petName + "'s hunger to " + asPercent(animal.getNutrition()));
+                        System.out.println(petName + " is now only " + asPercent(1 - animal.getNutrition()) + " hungry");
                     }
-                    animal.eat(food);
-                    System.out.println();
-                    System.out.println("Replenished " + petName + "'s hunger to " + asPercent(animal.getNutrition()));
-                    System.out.println(petName + " is now only " + asPercent(1 - animal.getNutrition()) + " hungry");
+                    break;
                 }
-                break;
-            }
-            case 1: { // thirsty
-                animal.makeThirsty();
-                System.out.println(asPercent(1 - animal.getHydration()) + " thirsty!");
+                case 1: { // thirsty
+                    animal.makeThirsty();
+                    System.out.println(asPercent(1 - animal.getHydration()) + " thirsty!");
 
-                String[] drinks = animal.getLiquids();
-                HashMap<String, Float> hydration = animal.getHydrationData();
+                    String[] drinks = animal.getLiquids();
+                    HashMap<String, Float> hydration = animal.getHydrationData();
 
-                String drink = null;
-                while (drink == null) {
-                    System.out.println("What will you give " + petName + "?");
-                    System.out.printf("%s, %s, or %s\n", drinks[0], drinks[1], drinks[2]);
+                    String drink = null;
+                    while (drink == null) {
+                        System.out.println("What will you give " + petName + "?");
+                        System.out.printf("%s, %s, or %s\n", drinks[0], drinks[1], drinks[2]);
 
-                    String inputDrink = scanner.next().toLowerCase();
-                    if (hydration.containsKey(inputDrink)) {
-                        drink = inputDrink;
-                    } else {
-                        System.out.println("That is not a valid drink!\n");
+                        String inputDrink = scanner.next().toLowerCase();
+                        if (hydration.containsKey(inputDrink)) {
+                            drink = inputDrink;
+                        } else {
+                            System.out.println("That is not a valid drink!\n");
+                        }
+                        animal.drink(drink);
+                        System.out.println("Replenished " + petName + "'s thirst to " + asPercent(animal.getHydration()));
+                        System.out.println(petName + " is now only " + asPercent(1 - animal.getHydration()) + " thirsty");
                     }
-                    animal.drink(drink);
-                    System.out.println();
-                    System.out.println("Replenished " + petName + "'s thirst to " + asPercent(animal.getHydration()));
-                    System.out.println(petName + " is now only " + asPercent(1 - animal.getHydration()) + " thirsty");
+                    break;
                 }
-                break;
-            }
-            case 2: { // lonely
-                animal.makeLonely();
-                System.out.println(asPercent(1 - animal.getLove()) + " lonely :(");
+                case 2: { // lonely
+                    animal.makeLonely();
+                    System.out.println(asPercent(1 - animal.getLove()) + " lonely :(");
 
-                String[] loving = animal.getActions();
-                HashMap<String, Float> love = animal.getLoveData();
+                    String[] loving = animal.getActions();
+                    HashMap<String, Float> love = animal.getLoveData();
 
-                String action = null;
-                while (action == null) {
-                    System.out.println("What will you give " + petName + "?");
-                    System.out.printf("%s, %s, or %s\n", loving[0], loving[1], loving[2]);
+                    String action = null;
+                    while (action == null) {
+                        System.out.println("What will you give " + petName + "?");
+                        System.out.printf("%s, %s, or %s\n", loving[0], loving[1], loving[2]);
 
-                    String inputAction = scanner.next().toLowerCase();
-                    if (love.containsKey(inputAction)) {
-                        action = inputAction;
-                    } else {
-                        System.out.println("That is not a valid action!\n");
+                        String inputAction = scanner.next().toLowerCase();
+                        if (love.containsKey(inputAction)) {
+                            action = inputAction;
+                        } else {
+                            System.out.println("That is not a valid action!\n");
+                        }
+                        animal.receive(action);
+                        System.out.println("Replenished " + petName + "'s love meter to " + asPercent(animal.getLove()));
+                        System.out.println(petName + " is now only " + asPercent(1 - animal.getLove()) + " lonely");
                     }
-                    animal.receive(action);
-                    System.out.println();
-                    System.out.println("Replenished " + petName + "'s love meter to " + asPercent(animal.getLove()));
-                    System.out.println(petName + " is now only " + asPercent(1 - animal.getLove()) + " lonely");
+                    break;
                 }
-                break;
-            }
             }
 
             char input = 0;
@@ -250,16 +247,14 @@ public class Program {
      * Prints an animal's stats to the console
      */
     private static void printStats(Animal animal) {
-        System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()),
-                asPercent(1 - animal.getNutrition()));
-        System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()),
-                asPercent(1 - animal.getHydration()));
+        System.out.printf("Nutrition: %s (%s hungry)\n", asPercent(animal.getNutrition()), asPercent(1 - animal.getNutrition()));
+        System.out.printf("Hydration: %s (%s thirsty)\n", asPercent(animal.getHydration()), asPercent(1 - animal.getHydration()));
         System.out.printf("Love: %s (%s lonely)\n", asPercent(animal.getLove()), asPercent(1 - animal.getLove()));
+        System.out.println();
     }
 
     /**
-     * Converts a float amount into a string percentage representation (rounded to 0
-     * d.p.)
+     * Converts a float amount into a string percentage representation (rounded to 0 d.p.)
      */
     private static String asPercent(float amount) {
         return String.format("%.0f%%", amount * 100);

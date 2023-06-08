@@ -1,4 +1,5 @@
 pet*.txt
+
 DB-*
 
 # Compiled class file
@@ -10,6 +11,9 @@ DB-*
 # Virtual machine crash logs
 hs_err_pid*
 replay_pid*
+
+# MacOS
+.DS_Store
 
 # NetBeans
 nbproject/private/
