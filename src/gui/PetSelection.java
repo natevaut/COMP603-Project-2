@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 
 import animals.Animal;
 import db.PetsDatabase;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 
 /**
  * @author Alvina Angelin 22152692
@@ -25,10 +28,10 @@ public class PetSelection {
         int frameWidth = 400;
         int frameHeight = 300;
         
-        frame = new JFrame("Pet Selection");
+        frame = new JFrame("Select Your Pet");
         frame.setSize(frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLayout(null);
+        frame.setLayout(new GridLayout(3,3));
         
         int buttonWidth = 120;
         int buttonHeight = 40;
