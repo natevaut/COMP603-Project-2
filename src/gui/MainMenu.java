@@ -20,19 +20,12 @@ import db.PetsDatabase;
 public class MainMenu {
     public JFrame frame;
     
-    private JTextField textField;
-    
     private JButton adoptButton;
     private JButton exitButton;
     
     private JLabel welcomeLabel;
     
-    private PetsDatabase pdb;
-    
     public MainMenu(PetsDatabase pdb) {
-    	
-    	// set database
-    	this.pdb = pdb;
         
         int width = 600;
         int height = 350;
@@ -60,10 +53,10 @@ public class MainMenu {
             int choice = JOptionPane.showOptionDialog(frame, "Do you already have a pet?", "Pet Adoption",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
             if (choice == JOptionPane.YES_OPTION) {
-                PetSelection petSelection = new PetSelection(pdb);
+                PetSelectionMenu petSelection = new PetSelectionMenu(pdb);
                 petSelection.display();
             } else {
-                NewPet newPet = new NewPet(this);
+                NewPetMenu newPet = new NewPetMenu(this);
                 newPet.display();
             }
         });
