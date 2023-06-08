@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,7 +8,6 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 
 public class PetGUI {
-    private JFrame frame;
+    public JFrame frame;
     private JTextField textField;
     
     private JButton adoptButton;
@@ -35,12 +33,6 @@ public class PetGUI {
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
-        
-        // Add background image
-        // ImageIcon backgroundIcon = new ImageIcon("images/background.gif"); // Replace with your image file path
-        // JLabel backgroundLabel = new JLabel(backgroundIcon);
-        // backgroundLabel.setBounds(0, 0, width, height);
-        // frame.add(backgroundLabel);
         
         //welcome label
         welcomeLabel = new JLabel("Welcome to Pet Simulator");
@@ -62,7 +54,7 @@ public class PetGUI {
                 PetSelection petSelection = new PetSelection();
                 petSelection.display();
             } else {
-                NewPet newPet = new NewPet();
+                NewPet newPet = new NewPet(this);
                 newPet.display();
             }
         });

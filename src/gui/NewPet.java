@@ -1,10 +1,8 @@
 package gui;
 
 import animals.Species;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -20,6 +18,12 @@ public class NewPet {
     private JFrame frame;
     private JComboBox<String> petComboBox;
     private JTextField nameInput;
+    
+    private PetGUI petGUI;
+    
+    public NewPet(PetGUI petGUI) {
+        this.petGUI = petGUI;
+    }
     
     public void display() {
         int frameWidth = 400;
@@ -49,7 +53,8 @@ public class NewPet {
             String name = nameInput.getText();
             PetGame petGame = new PetGame(species, name);
             petGame.display();
-            //make it so if u confirm the main menu petgui closes
+            frame.dispose();
+            petGUI.frame.dispose();
         });
        
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
