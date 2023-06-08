@@ -119,15 +119,15 @@ public class PetGame {
     private ImageIcon doImage(Species species) {
         switch (pet.getSpecies()) {
             case DOG:
-                return new ImageIcon("images/dog.gif");
+                return new ImageIcon(getClass().getResource("/dog.gif"));
             case CAT:
-                return new ImageIcon("images/cat.gif");
+                return new ImageIcon(getClass().getResource("/cat.gif"));
             case RABBIT:
-                return new ImageIcon("images/rabbit.gif");
+                return new ImageIcon(getClass().getResource("/rabbit.gif"));
             case HAMSTER:
-                return new ImageIcon("images/hamster.gif");
+                return new ImageIcon(getClass().getResource("/hamster.gif"));
             case FROG:
-                return new ImageIcon("images/frog.gif");
+                return new ImageIcon(getClass().getResource("/frog.gif"));
         }
         return null;
     }
