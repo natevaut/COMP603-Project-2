@@ -32,6 +32,9 @@ public class PetGame implements IPetGUI {
         this.pet = pet;
     }
 
+    /**
+     * Displays the GUI to run the pet adoption game in.
+     */
     public void display() {
         int frameWidth = 350;
         int frameHeight = 350;
@@ -41,6 +44,7 @@ public class PetGame implements IPetGUI {
         frame.setSize(frameWidth, frameHeight);
         frame.setLayout(new FlowLayout());
 
+        // setup grid layout
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -116,6 +120,11 @@ public class PetGame implements IPetGUI {
         
     }
 
+    /**
+     * Fetches an animal image from inside the JAR.
+     * @param species The species to get the image for.
+     * @return An image of the animal.
+     */
     private ImageIcon doImage(Species species) {
         switch (pet.getSpecies()) {
             case DOG:

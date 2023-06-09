@@ -11,6 +11,9 @@ import fileio.FileIO;
  */
 public class MainGUI {
 
+	/**
+	 * Starts the GUI program.
+	 */
     public static void main(String[] args) {
         
         FileIO.touchPetsFile();

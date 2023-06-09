@@ -21,6 +21,9 @@ public class ViewStatsMenu implements IPetGUI {
         this.pdb = pdb;
     }
 
+    /**
+     * Displays the "Select Your Pet" menu.
+     */
     public void display() {
         int frameWidth = 400;
         int frameHeight = 300;
@@ -40,6 +43,7 @@ public class ViewStatsMenu implements IPetGUI {
 
         int x = startX, y = startY;
 
+        // put all pets into the panel
         for (Animal pet : pets.values()) {
 
             JButton petButton = new JButton(pet.getName());
@@ -58,6 +62,7 @@ public class ViewStatsMenu implements IPetGUI {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        // error dialog for when there are no pets
         if (pets.size() == 0) {
             JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE);
             frame.dispose();

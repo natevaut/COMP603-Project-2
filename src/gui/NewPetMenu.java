@@ -1,9 +1,8 @@
 package gui;
 
-import animals.Animal;
-import animals.Species;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -11,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import animals.Animal;
+import animals.Species;
+import db.PetsDatabase;
 
 /**
  * @author Alvina Angelin 22152692
@@ -22,12 +25,15 @@ public class NewPetMenu implements IPetGUI {
     private JComboBox<String> petComboBox;
     private JTextField nameInput;
 
-    private MainMenu petGUI;
+    private PetsDatabase pdb;
 
-    public NewPetMenu(MainMenu petGUI) {
-        this.petGUI = petGUI;
+    public NewPetMenu(PetsDatabase pdb) {
+        this.pdb = pdb;
     }
 
+    /**
+     * Displays the "New Pet" menu GUI
+     */
     public void display() {
         int frameWidth = 400;
         int frameHeight = 250;
@@ -64,16 +70,18 @@ public class NewPetMenu implements IPetGUI {
             Animal pet = Species.newSpeciesFromString(species);
             pet.setName(name);
 
-            PetGame petGame = new PetGame(this.petGUI.pdb, pet);
+            PetGame petGame = new PetGame(pdb, pet);
             petGame.display();
             frame.dispose();
         }
         );
 
+        // add buttons to container
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.add(cancelButton);
         bottomPanel.add(confirmButton);
 
+        // add all labels and boxes
         panel.add(petLabel);
         panel.add(petComboBox);
         panel.add(nameLabel);

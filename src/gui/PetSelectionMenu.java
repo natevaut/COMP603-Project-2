@@ -24,13 +24,13 @@ public class PetSelectionMenu implements IPetGUI {
 
     private PetsDatabase pdb;
 
-    private JLabel noLabel;
-    private JButton returnButton;
-
     public PetSelectionMenu(PetsDatabase pdb) {
         this.pdb = pdb;
     }
 
+    /**
+     * Displays the "Select Pet" menu.
+     */
     public void display() {
         int frameWidth = 400;
         int frameHeight = 300;

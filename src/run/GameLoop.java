@@ -29,14 +29,21 @@ public class GameLoop {
 		this.pet = pet;
 	}
 	
+	/**
+	 * Run the Game Loop.
+	 */
 	public void run() {
 		this.runOnce();
 	}
 
+	/**
+	 * Run an instance of the Game Loop.
+	 */
 	public void runOnce() {
-		buttons[0].setText("Debug1");
-		buttons[1].setText("Debug1");
-		buttons[2].setText("Debug1");
+		buttons[0].setText("Placeholder");
+		buttons[1].setText("Placeholder");
+		buttons[2].setText("Placeholder");
+
 		Random rand = new Random();
 		int needIndex = rand.nextInt(3);
 		Need need = Need.values()[needIndex];
@@ -76,6 +83,11 @@ public class GameLoop {
 		}
 	}
 	
+	/**
+	 * Set all the buttons' action listeners to perform the given action.
+	 * @param need The action being performed.
+	 * @param items The options to put in the buttons.
+	 */
 	private void setActionListeners(Need need, String[] items) {
 		this.clearActionListeners(this.buttons);
 		this.buttons[0].addActionListener(e -> {
@@ -89,6 +101,11 @@ public class GameLoop {
 		});
 	}
 	
+	/**
+	 * Perform an action.
+	 * @param need The action to perform.
+	 * @param item The chosen option.
+	 */
 	private void doThing(Need need, String item) {
 		String newTitleText = null;
 		// do thing
@@ -142,6 +159,11 @@ public class GameLoop {
 		});
 	}
 
+	/**
+	 * Set the text of one of the buttons.
+	 * @param n The number of the button to change the text of (1-indexed).
+	 * @param text The text to put in the button.
+	 */
 	private void setButtonText(int n, String text) {
 		if (this.buttons[n - 1] == null)
 			return;
@@ -149,12 +171,21 @@ public class GameLoop {
 		this.buttons[n - 1].setText(text);
 	}
 
+	/**
+	 * Set the text in all the buttons.
+	 * @param text The label to apply to the buttons.
+	 * @param items The text to put in each of the three buttons.
+	 */
 	private void setButtonsText(String text, String[] items) {
 		this.setButtonText(1, text + " " + items[0]);
 		this.setButtonText(2, text + " " + items[1]);
 		this.setButtonText(3, text + " " + items[2]);
 	}
 	
+	/**
+	 * Reset the action listeners of the buttons.
+	 * @param buttons The buttons.
+	 */
 	private void clearActionListeners(JButton[] buttons) {
 		for (JButton button : buttons) {
 			for (ActionListener al : button.getActionListeners()) {
@@ -163,6 +194,11 @@ public class GameLoop {
 		}
 	}
 
+	/**
+	 * Convert a number to a string percentage.
+	 * @param amount The number to convert.
+	 * @return The number formatted as a percentage.
+	 */
 	private static String asPercent(float amount) {
 		return String.format("%.0f%%", amount * 100);
 	}

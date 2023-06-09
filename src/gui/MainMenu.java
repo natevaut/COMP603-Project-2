@@ -31,6 +31,9 @@ public class MainMenu implements IPetGUI {
         this.display();
     }
     
+    /**
+     * Displays the Main Menu GUI.
+     */
     public void display() {
         
         int width = 600;
@@ -62,7 +65,7 @@ public class MainMenu implements IPetGUI {
                 PetSelectionMenu petSelection = new PetSelectionMenu(pdb);
                 petSelection.display();
             } else if (choice == JOptionPane.NO_OPTION) {
-                NewPetMenu newPet = new NewPetMenu(this);
+                NewPetMenu newPet = new NewPetMenu(pdb);
                 newPet.display();
             } 
         });
