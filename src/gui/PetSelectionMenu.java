@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -50,35 +51,25 @@ public class PetSelectionMenu {
         HashMap<String, Animal> pets = pdb.getAllPets();
 
         int x = startX, y = startY;
+
         for (Animal pet : pets.values()) {
-            if (pets.size() == 0) {
-                noLabel = new JLabel("You have no pets");
-                noLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-                noLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                noLabel.setBounds(frameWidth / 2 - 200 / 2, 250, 200, 20);
-                returnButton = new JButton("Main Menu");
-                returnButton.setHorizontalAlignment(SwingConstants.CENTER);
-                returnButton.setBounds(frameWidth / 2 - 200 / 2, 250, 200, 20);
-                returnButton.addActionListener(e -> {
-                    MainMenu mainMenu = new MainMenu(this.pdb);
-                    mainMenu.display();
-                    frame.dispose();
-                });
-                frame.add(noLabel);
-                frame.add(returnButton);
-            } else {
-                JButton petButton = new JButton(pet.getName());
-                petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
-                petButton.addActionListener(e -> {
-                    PetGame petGame = new PetGame(this.pdb, pet);
-                    petGame.display();
-                    frame.dispose();
-                });
-                frame.add(petButton);
-            }
+
+            JButton petButton = new JButton(pet.getName());
+            petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
+            petButton.addActionListener(e -> {
+                PetGame petGame = new PetGame(this.pdb, pet);
+                petGame.display();
+                frame.dispose();
+            });
+            frame.add(petButton);
         }
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        
+        if (pets.size() == 0) {
+            JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE);
+            frame.dispose();
+        }
     }
 }
