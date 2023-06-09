@@ -2,11 +2,15 @@ package gui;
 
 import animals.Animal;
 import db.PetsDatabase;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * @author Alvina Angelin 22152692
@@ -16,57 +20,64 @@ public class ViewStatsMenu implements IPetGUI {
     private JFrame frame;
 
     private PetsDatabase pdb;
+    private Animal pet;
 
-    public ViewStatsMenu(PetsDatabase pdb) {
+    public ViewStatsMenu(PetsDatabase pdb, Animal pet) {
         this.pdb = pdb;
+        this.pet = pet;
     }
 
-    /**
-     * Displays the "Select Your Pet" menu.
-     */
     public void display() {
         int frameWidth = 400;
-        int frameHeight = 300;
-        int buttonWidth = 120;
-        int buttonHeight = 40;
-        int spacing = 20;
-        int startX = frameWidth / 2 - buttonWidth / 2;
-        int startY = spacing;
+        int frameHeight = 150;
 
-        frame = new JFrame("Select Your Pet");
+        frame = new JFrame("Pet Stats");
         frame.setSize(frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLayout(new GridLayout(3, 3));
 
-        // load pets from database
-        HashMap<String, Animal> pets = pdb.getAllPets();
+        String title = "Your Pet Stats";
+        String[] texts = {pet.getName() + " THE " + pet.getSpecies(), "", "Hunger: %.1f%%",
+            "Thirst: %.1f%%", "Loneliness: %.1f%%"};
+        String text = "<html>" + String.join("<br/>", texts) + "</html>";
+        text = String.format(text, (1 - pet.getNutrition()) * 100, (1 - pet.getHydration()) * 100, (1 - pet.getLove()) * 100);
 
-        int x = startX, y = startY;
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        JLabel textLabel = new JLabel(text);
 
-        // put all pets into the panel
-        for (Animal pet : pets.values()) {
+        JButton renameButton = new JButton("rename");
+        renameButton.addActionListener(f -> {
+            String newName = JOptionPane.showInputDialog(frame, "Enter new name for ");
+            if (newName != null) {
+                // set new name
+            }
+        });
 
-            JButton petButton = new JButton(pet.getName());
-            petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
-            petButton.addActionListener(e -> {
-            	String title = "Your Pet Stats";
-            	String[] texts = { pet.getName() + " THE " + pet.getSpecies(), "Hunger: %.1f%%",
-            			"Thirst: %.1f%%", "Loneliness: %.1f%%"} ;
-            	String text = String.join("\n", texts);
-            	text = String.format(text, (1-pet.getNutrition())*100, (1-pet.getHydration())*100, (1-pet.getLove())*100);
-            	JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
-            });
-            frame.add(petButton);
-        }
+        //delete pet button
+        JButton deleteButton = new JButton("delete");
+        deleteButton.addActionListener(g -> {
+            int choice = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete this pet?", null, JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                //delete animal
+            }
+        });
+        
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        bottomPanel.add(renameButton);
+        bottomPanel.add(deleteButton);
 
+
+        constraints.gridy = 1;
+        mainPanel.add(textLabel, constraints);
+        
+        constraints.gridy = 2;
+        mainPanel.add(bottomPanel, constraints);
+
+        frame.add(mainPanel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-        // error dialog for when there are no pets
-        if (pets.size() == 0) {
-            JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE);
-            frame.dispose();
-        }
-
     }
+
 }
