@@ -48,11 +48,13 @@ public class ViewStatsMenu implements IPetGUI {
 
         JButton renameButton = new JButton("rename");
         renameButton.addActionListener(f -> {
-            String newName = JOptionPane.showInputDialog(frame, "Enter new name for " + pet.getName());
+            String newName = JOptionPane.showInputDialog(frame, "Enter new name for " + pet.getName(),
+                    "Rename Pet", JOptionPane.PLAIN_MESSAGE);
             if (newName != null) {
                 // rename pet
                 pdb.renamePet(pet.getName(), newName);
-                JOptionPane.showMessageDialog(frame, "Renamed pet " + pet.getName() + " to " + newName);
+                JOptionPane.showMessageDialog(frame, "Renamed pet " + pet.getName() + " to " + newName,
+                        "Succesful", JOptionPane.PLAIN_MESSAGE);
                 // refresh pet selection menu (aka close and reopen it)
             }
         });
@@ -60,11 +62,13 @@ public class ViewStatsMenu implements IPetGUI {
         //delete pet button
         JButton deleteButton = new JButton("delete");
         deleteButton.addActionListener(g -> {
-            int choice = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete this pet?", null, JOptionPane.YES_NO_OPTION);
+            int choice = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete this pet?",
+                    "Delete Pet", JOptionPane.YES_NO_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
                 // delete pet
                 pdb.deletePet(pet.getName());
-                JOptionPane.showMessageDialog(frame, "Deleted pet " + pet.getName());
+                JOptionPane.showMessageDialog(frame, "Deleted pet " + pet.getName(),
+                        "Succesful", JOptionPane.PLAIN_MESSAGE);
                 // refresh pet selection menu (aka close and reopen it)
             }
         });
