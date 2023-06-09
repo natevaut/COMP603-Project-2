@@ -46,7 +46,9 @@ public class ViewStatsMenu implements IPetGUI {
             petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
             petButton.addActionListener(e -> {
             	String title = "Your Pet Stats";
-            	String text = "Hunger: %.1f%%\nThirst: %.1f%%\nLoneliness: %.1f%%";
+            	String[] texts = { pet.getName() + " THE " + pet.getSpecies(), "Hunger: %.1f%%",
+            			"Thirst: %.1f%%", "Loneliness: %.1f%%"} ;
+            	String text = String.join("\n", texts);
             	text = String.format(text, (1-pet.getNutrition())*100, (1-pet.getHydration())*100, (1-pet.getLove())*100);
             	JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
             });

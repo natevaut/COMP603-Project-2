@@ -34,7 +34,7 @@ public class MainMenu implements IPetGUI {
     public void display() {
         
         int width = 600;
-        int height = 350;
+        int height = 400;
         
         //main window
         frame = new JFrame("Pet Simulator");
