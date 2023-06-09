@@ -11,13 +11,13 @@ import javax.swing.JOptionPane;
 /**
  * @author Alvina Angelin 22152692
  */
-public class ViewStats implements IPetGUI {
+public class ViewStatsMenu implements IPetGUI {
 
     private JFrame frame;
 
     private PetsDatabase pdb;
 
-    public ViewStats(PetsDatabase pdb) {
+    public ViewStatsMenu(PetsDatabase pdb) {
         this.pdb = pdb;
     }
 
@@ -45,7 +45,10 @@ public class ViewStats implements IPetGUI {
             JButton petButton = new JButton(pet.getName());
             petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
             petButton.addActionListener(e -> {
-                // add stats pop up
+            	String title = "Your Pet Stats";
+            	String text = "Hunger: %.1f%%\nThirst: %.1f%%\nLoneliness: %.1f%%";
+            	text = String.format(text, (1-pet.getNutrition())*100, (1-pet.getHydration())*100, (1-pet.getLove())*100);
+            	JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
             });
             frame.add(petButton);
         }

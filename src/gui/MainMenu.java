@@ -74,7 +74,7 @@ public class MainMenu implements IPetGUI {
         viewButton.setBounds(width/2 - viewWidth/2, 240, viewWidth, 20);
         viewButton.setHorizontalAlignment(SwingConstants.CENTER);
         viewButton.addActionListener(e -> {
-            ViewStats viewStats = new ViewStats(pdb);
+            ViewStatsMenu viewStats = new ViewStatsMenu(pdb);
             viewStats.display();
         });
         frame.add(viewButton);
