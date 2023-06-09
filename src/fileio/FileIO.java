@@ -26,7 +26,7 @@ public class FileIO {
 
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(FILENAME, true));
-			pw.printf("%s", animal.getName().toUpperCase());
+			pw.printf("%s", animal.getName());
 			pw.print(":");
 			pw.printf("type=%s", animal.getSpecies());
 			pw.print(",");
