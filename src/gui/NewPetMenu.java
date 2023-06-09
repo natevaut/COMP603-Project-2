@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 /**
  * @author Alvina Angelin 22152692
  */
+
 public class NewPetMenu {
     
     private JFrame frame;
@@ -43,11 +44,12 @@ public class NewPetMenu {
         JLabel nameLabel = new JLabel("Enter a Name: ");
         nameInput = new JTextField(15);
         
-        //Confirm and Cancel Button
+        //Cancel Button
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(e -> {
             frame.dispose();
         });
+        //Confirm Button
         JButton confirmButton = new JButton("Confirm");
         confirmButton.addActionListener(e -> {
             String species = (String)petComboBox.getSelectedItem();

@@ -22,11 +22,16 @@ public class MainMenu {
     
     private JButton adoptButton;
     private JButton exitButton;
+    private JButton viewButton;
     
     private JLabel welcomeLabel;
     
     public MainMenu(PetsDatabase pdb) {
     	this.pdb = pdb;
+        this.display();
+    }
+    
+    public void display() {
         
         int width = 600;
         int height = 350;
@@ -63,10 +68,20 @@ public class MainMenu {
         });
         frame.add(adoptButton);
         
+        //view all pets button
+        viewButton = new JButton("View all pets");
+        int viewWidth = 500;
+        viewButton.setBounds(width/2 - viewWidth/2, 240, viewWidth, 20);
+        viewButton.setHorizontalAlignment(SwingConstants.CENTER);
+        viewButton.addActionListener(e -> {
+            
+        });
+        frame.add(viewButton);
+        
         //exit button
-        exitButton = new JButton("EXIT");
+        exitButton = new JButton("exit");
         int exitwidth = 500;
-        exitButton.setBounds(width/2 - exitwidth/2, 250, exitwidth, 20);
+        exitButton.setBounds(width/2 - exitwidth/2, 280, exitwidth, 20);
         exitButton.setHorizontalAlignment(SwingConstants.CENTER);
         exitButton.addActionListener(new ActionListener() {
             @Override
