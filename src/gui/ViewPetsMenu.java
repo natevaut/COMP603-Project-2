@@ -5,6 +5,7 @@ import db.PetsDatabase;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -60,9 +61,10 @@ public class ViewPetsMenu implements IPetGUI {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        ImageIcon icon = new ImageIcon("/paw.gif");
         // error dialog for when there are no pets
         if (pets.size() == 0) {
-            JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE, icon);
             frame.dispose();
         }
 
