@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import animals.Animal;
 import db.PetsDatabase;
 import java.awt.GridLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -63,10 +62,8 @@ public class PetSelectionMenu implements IPetGUI {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
-        ImageIcon icon = new ImageIcon("/paw.gif");
-        
         if (pets.size() == 0) {
-            JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(frame, "You Have No Pets!", "Pets", JOptionPane.INFORMATION_MESSAGE);
             frame.dispose();
         }
     }

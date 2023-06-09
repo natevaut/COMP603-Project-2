@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import animals.Animal;
 import animals.Species;
 import db.PetsDatabase;
-import javax.swing.ImageIcon;
 
 /**
  * @author Alvina Angelin 22152692
@@ -61,11 +60,9 @@ public class NewPetMenu implements IPetGUI {
         confirmButton.addActionListener(e -> {
             String species = (String) petComboBox.getSelectedItem();
             String name = nameInput.getText();
-            
-            ImageIcon icon = new ImageIcon("/paw.gif");
 
             if (name == null || name.length() == 0) {
-                JOptionPane.showMessageDialog(frame, "Please Enter A Name", "New Pet", JOptionPane.INFORMATION_MESSAGE, icon);
+                JOptionPane.showMessageDialog(frame, "Please Enter A Name", "New Pet", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
             
