@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class ViewPetsMenu implements IPetGUI {
 
-    private JFrame frame;
+    public JFrame frame;
 
     private PetsDatabase pdb;
 
@@ -50,7 +50,7 @@ public class ViewPetsMenu implements IPetGUI {
             JButton petButton = new JButton(pet.getName());
             petButton.setBounds(x, y += buttonHeight + spacing, buttonWidth, buttonHeight);
             petButton.addActionListener(e -> {
-                ViewStatsMenu viewStatsMenu = new ViewStatsMenu(pdb, pet);
+                ViewStatsMenu viewStatsMenu = new ViewStatsMenu(this, pdb, pet);
                 viewStatsMenu.display();
             });
 
@@ -67,4 +67,9 @@ public class ViewPetsMenu implements IPetGUI {
         }
 
     }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
 }

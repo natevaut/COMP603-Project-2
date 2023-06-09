@@ -5,6 +5,8 @@ import db.PetsDatabase;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,8 +22,10 @@ public class ViewStatsMenu implements IPetGUI {
 
     private PetsDatabase pdb;
     private Animal pet;
+    private ViewPetsMenu parent;
 
-    public ViewStatsMenu(PetsDatabase pdb, Animal pet) {
+    public ViewStatsMenu(ViewPetsMenu parent, PetsDatabase pdb, Animal pet) {
+        this.parent = parent;
         this.pdb = pdb;
         this.pet = pet;
     }
@@ -33,6 +37,8 @@ public class ViewStatsMenu implements IPetGUI {
         frame = new JFrame("Pet Stats");
         frame.setSize(frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        ViewPetsMenu viewPetsMenu = new ViewPetsMenu(pdb);
 
         String title = "Your Pet Stats";
         String[] texts = {pet.getName() + " THE " + pet.getSpecies(), "", "Hunger: %.1f%%",
@@ -55,7 +61,11 @@ public class ViewStatsMenu implements IPetGUI {
                 pdb.renamePet(pet.getName(), newName);
                 JOptionPane.showMessageDialog(frame, "Renamed pet " + pet.getName() + " to " + newName,
                         "Succesful", JOptionPane.PLAIN_MESSAGE);
-                // refresh pet selection menu (aka close and reopen it)
+
+                frame.dispose();
+                JFrame menuFrame = parent.getFrame();
+                menuFrame.dispose();
+                viewPetsMenu.display();
             }
         });
 
@@ -69,17 +79,22 @@ public class ViewStatsMenu implements IPetGUI {
                 pdb.deletePet(pet.getName());
                 JOptionPane.showMessageDialog(frame, "Deleted pet " + pet.getName(),
                         "Succesful", JOptionPane.PLAIN_MESSAGE);
-                // refresh pet selection menu (aka close and reopen it)
+
+                frame.dispose();
+                JFrame menuFrame = parent.getFrame();
+                menuFrame.dispose();
+                viewPetsMenu.display();
+
             }
         });
-        
+
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.add(renameButton);
         bottomPanel.add(deleteButton);
 
         constraints.gridy = 1;
         mainPanel.add(textLabel, constraints);
-        
+
         constraints.gridy = 2;
         mainPanel.add(bottomPanel, constraints);
 
