@@ -24,5 +24,10 @@ public class MainGUI {
         SwingUtilities.invokeLater(() -> {
             new MainMenu(pdb);
         });
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            // Shutdown code
+            pdb.dumpToFile();
+        }));
     }
 }

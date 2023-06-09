@@ -27,8 +27,8 @@ public class ViewStatsMenu implements IPetGUI {
     }
 
     public void display() {
-        int frameWidth = 400;
-        int frameHeight = 150;
+        int frameWidth = 300;
+        int frameHeight = 200;
 
         frame = new JFrame("Pet Stats");
         frame.setSize(frameWidth, frameHeight);
@@ -48,9 +48,12 @@ public class ViewStatsMenu implements IPetGUI {
 
         JButton renameButton = new JButton("rename");
         renameButton.addActionListener(f -> {
-            String newName = JOptionPane.showInputDialog(frame, "Enter new name for ");
+            String newName = JOptionPane.showInputDialog(frame, "Enter new name for " + pet.getName());
             if (newName != null) {
-                // set new name
+                // rename pet
+                pdb.renamePet(pet.getName(), newName);
+                JOptionPane.showMessageDialog(frame, "Renamed pet " + pet.getName() + " to " + newName);
+                // refresh pet selection menu (aka close and reopen it)
             }
         });
 
@@ -59,7 +62,10 @@ public class ViewStatsMenu implements IPetGUI {
         deleteButton.addActionListener(g -> {
             int choice = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete this pet?", null, JOptionPane.YES_NO_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
-                //delete animal
+                // delete pet
+                pdb.deletePet(pet.getName());
+                JOptionPane.showMessageDialog(frame, "Deleted pet " + pet.getName());
+                // refresh pet selection menu (aka close and reopen it)
             }
         });
         
