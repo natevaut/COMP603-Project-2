@@ -104,12 +104,19 @@ public class PetsDatabase {
      * Renames a pet in the database.
      * @param oldName
      * @param newName
+     * @return Whether the pet was successfully renamed.
      */
-    public void renamePet(String oldName, String newName) {
-        Animal pet = this.getPetByName(oldName);
-        pet.setName(newName);
-        this.deletePet(oldName);
-        this.savePet(pet);
+    public boolean renamePet(String oldName, String newName) {
+        try {
+            Statement statement = conn.createStatement();
+            String sql_f = "UPDATE pets SET %s = '%s' WHERE %s = '%s'";
+            String sql = String.format(sql_f, Column.NAME, newName, Column.NAME, oldName);
+            statement.executeUpdate(sql);
+            return true;
+        } catch (SQLException err) {
+            err.printStackTrace();
+            return false;
+        }
     }
 
     /**
