@@ -80,7 +80,7 @@ public class MainMenu implements IPetGUI {
         frame.add(viewButton);
         
         //exit button
-        exitButton = new JButton("exit");
+        exitButton = new JButton("Exit");
         int exitwidth = 500;
         exitButton.setBounds(width/2 - exitwidth/2, 280, exitwidth, 20);
         exitButton.setHorizontalAlignment(SwingConstants.CENTER);

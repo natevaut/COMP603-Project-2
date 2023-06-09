@@ -58,6 +58,7 @@ public class NewPetMenu implements IPetGUI {
 
             if (name == null || name.length() == 0) {
                 JOptionPane.showMessageDialog(frame, "Please Enter A Name", "New Pet", JOptionPane.INFORMATION_MESSAGE);
+                return;
             }
             
             Animal pet = Species.newSpeciesFromString(species);
