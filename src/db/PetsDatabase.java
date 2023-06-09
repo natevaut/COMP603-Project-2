@@ -91,7 +91,7 @@ public class PetsDatabase {
     public boolean deletePet(String name) {
         try {
             Statement statement = conn.createStatement();
-            String sql = String.format("DELETE FROM pets WHERE petName = '%s'", name);
+            String sql = String.format("DELETE FROM pets WHERE %s = '%s'", Column.NAME, name);
             statement.executeUpdate(sql);
             return true;
         } catch (SQLException err) {
