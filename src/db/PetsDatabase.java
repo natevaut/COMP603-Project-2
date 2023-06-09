@@ -171,6 +171,29 @@ public class PetsDatabase {
     }
 
     /**
+     * Checks to see if there is a pet in the database with this name.
+     * @param name The name to check
+     * @return Whether there is a pet with this name.
+     */
+    public boolean containsPet(String name) {
+        try {
+            Statement statement = conn.createStatement();
+            String sql = String.format("SELECT COUNT(*) FROM pets WHERE %s = '%s'", Column.NAME, name);
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                if (count > 0) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (SQLException err) {
+            err.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * Saves all pets in the database to the pets file.
      */
     public void dumpToFile() {
