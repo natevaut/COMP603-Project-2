@@ -57,6 +57,13 @@ public class ViewStatsMenu implements IPetGUI {
             String newName = JOptionPane.showInputDialog(frame, "Enter new name for " + pet.getName(),
                     "Rename Pet", JOptionPane.PLAIN_MESSAGE);
             if (newName != null) {
+                // check if name already in use
+                if (pdb.containsPet(newName)) {
+                    JOptionPane.showMessageDialog(frame, "Name " + newName + " is already in use!",
+                            "Failure", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
                 // rename pet
                 pdb.renamePet(pet.getName(), newName);
                 JOptionPane.showMessageDialog(frame, "Renamed pet " + pet.getName() + " to " + newName,
