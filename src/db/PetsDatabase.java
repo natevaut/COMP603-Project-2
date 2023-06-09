@@ -44,8 +44,8 @@ public class PetsDatabase {
                 // don't care if table doesn't exist; good
             }
             String sql = "CREATE TABLE pets" + String.format(
-                    "(%s varchar(50), %s varchar(15)," + "%s float, %s float, %s float)", Column.NAME,
-                    Column.SPECIES, Column.NUTRITION, Column.HYDRATION, Column.LOVE);
+                    "(%s varchar(50), %s varchar(15), %s float, %s float, %s float)",
+                    Column.NAME, Column.SPECIES, Column.NUTRITION, Column.HYDRATION, Column.LOVE);
             statement.executeUpdate(sql);
         } catch (SQLException err) {
             err.printStackTrace();
@@ -55,7 +55,6 @@ public class PetsDatabase {
 
     /**
      * Saves a pet to the database.
-     * 
      * @param animal The pet to save.
      */
     public void savePet(Animal animal) {
@@ -72,6 +71,45 @@ public class PetsDatabase {
         } catch (SQLException err) {
             err.printStackTrace();
         }
+    }
+
+    /**
+     * Save several pets into the database.
+     * @param pets The pets to save.
+     */
+    public void savePets(HashMap<String, Animal> pets) {
+        for (Animal pet : pets.values()) {
+            savePet(pet);
+        }
+    }
+
+    /**
+     * Delete a pet from the database.
+     * @param name The name of the pet.
+     * @return Whether the pet was successfully deleted.
+     */
+    public boolean deletePet(String name) {
+        try {
+            Statement statement = conn.createStatement();
+            String sql = String.format("DELETE FROM pets WHERE petName = '%s'", name);
+            statement.executeUpdate(sql);
+            return true;
+        } catch (SQLException err) {
+            err.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Renames a pet in the database.
+     * @param oldName
+     * @param newName
+     */
+    public void renamePet(String oldName, String newName) {
+        Animal pet = this.getPetByName(oldName);
+        pet.setName(newName);
+        this.deletePet(oldName);
+        this.savePet(pet);
     }
 
     /**
@@ -99,7 +137,7 @@ public class PetsDatabase {
      * @return A map of names to pets.
      */
     public HashMap<String, Animal> getPetsBySpecies(Species species) {
-        String sql = String.format("SELECT * FROM pets WHERE %s = %s", Column.SPECIES, species.name());
+        String sql = String.format("SELECT * FROM pets WHERE %s = '%s'", Column.SPECIES, species.name());
         return this.getPetsFromQuery(sql);
     }
 
@@ -109,7 +147,7 @@ public class PetsDatabase {
      * @return The pet if found else `null`.
      */
     public Animal getPetByName(String name) {
-        String sql = String.format("SELECT * FROM pets WHERE %s = %s", Column.NAME, name);
+        String sql = String.format("SELECT * FROM pets WHERE %s = '%s'", Column.NAME, name);
         HashMap<String, Animal> pets = this.getPetsFromQuery(sql);
         // return first one
         return pets.values().iterator().next();
@@ -121,7 +159,7 @@ public class PetsDatabase {
      */
     public HashMap<String, Animal> getNeglectedPets() {
         String sql_f = "SELECT * FROM pets WHERE %s < 0.2 AND %s < 0.2 AND %s < 0.2";
-        String sql = String.format(sql, Column.NUTRITION, Column.HYDRATION, Column.LOVE);
+        String sql = String.format(sql_f, Column.NUTRITION, Column.HYDRATION, Column.LOVE);
         return this.getPetsFromQuery(sql);
     }
 
