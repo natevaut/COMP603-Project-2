@@ -8,10 +8,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import animals.Animal;
-import animals.Species;
 
 /** @author Nate Evans 21144881 */
 public class FileIO {
@@ -91,6 +91,8 @@ public class FileIO {
 
 		} catch (FileNotFoundException e) {
 			newPetsFile();
+		} catch (InputMismatchException e) {
+			// File is corrupted
 		} catch (IOException e) {
 		}
 
