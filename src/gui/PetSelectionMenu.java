@@ -7,13 +7,8 @@ import javax.swing.JFrame;
 
 import animals.Animal;
 import db.PetsDatabase;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 /**
  * @author Alvina Angelin 22152692

@@ -5,7 +5,6 @@ import db.PetsDatabase;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,7 +66,6 @@ public class ViewStatsMenu implements IPetGUI {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.add(renameButton);
         bottomPanel.add(deleteButton);
-
 
         constraints.gridy = 1;
         mainPanel.add(textLabel, constraints);

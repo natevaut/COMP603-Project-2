@@ -7,9 +7,7 @@ import java.awt.GridLayout;
 import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  * @author Alvina Angelin 22152692
