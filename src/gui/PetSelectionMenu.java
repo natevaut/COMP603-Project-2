@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 /**
  * @author Alvina Angelin 22152692
  */
-public class PetSelectionMenu {
+public class PetSelectionMenu implements IPetGUI {
 
     private JFrame frame;
 

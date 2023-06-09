@@ -16,7 +16,7 @@ import db.PetsDatabase;
  * @author Alvina Angelin 22152692
  */
 
-public class MainMenu {
+public class MainMenu implements IPetGUI {
     public JFrame frame;
     public PetsDatabase pdb;
     

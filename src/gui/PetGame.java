@@ -21,7 +21,7 @@ import run.GameLoop;
 /**
  * @author Alvina Angelin 22152692
  */
-public class PetGame {
+public class PetGame implements IPetGUI {
 
     private JFrame frame;
     private PetsDatabase pdb;

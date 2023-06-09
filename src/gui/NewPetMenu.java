@@ -15,8 +15,9 @@ import javax.swing.JTextField;
 /**
  * @author Alvina Angelin 22152692
  */
-public class NewPetMenu {
 
+public class NewPetMenu implements IPetGUI {
+    
     private JFrame frame;
     private JComboBox<String> petComboBox;
     private JTextField nameInput;
